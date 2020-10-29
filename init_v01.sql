@@ -2,19 +2,6 @@
 
 CREATE SCHEMA "web" AUTHORIZATION postgres;
 
--- DROP TYPE "web"."_USER";
-
-CREATE TYPE "web"."_USER" (
-	INPUT = array_in,
-	OUTPUT = array_out,
-	RECEIVE = array_recv,
-	SEND = array_send,
-	ANALYZE = array_typanalyze,
-	ALIGNMENT = 8,
-	STORAGE = any,
-	CATEGORY = A,
-	ELEMENT = "web".usuario,
-	DELIMITER = ',');
 -- "web".usuario definition
 
 -- Drop table
