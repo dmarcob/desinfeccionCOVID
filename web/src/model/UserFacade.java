@@ -69,6 +69,7 @@ public class UserFacade {
 			nuevoU.setString(6, perfil.getNickName());
 
 
+
 			System.out.println("DESPUES DE UPDATEAR PERFIL");
 
 			nuevoU.executeUpdate();

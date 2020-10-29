@@ -1,20 +1,19 @@
 package model;
-import java.sql.Date;
-import java.sql.Time;
+
 
 
 public class SolicitudVO {
 	static Integer idSolicitud = 1;
 	String direccion;
-	Date fecha;
-	Time hora;
+	String fecha;
+	String hora;
 	String mensaje;
 	String estado;
 	String servicio;
 	String usuario;
 	Integer Id;
 	
-	public SolicitudVO(String direccion, Date fecha, Time hora, String mensaje,
+	public SolicitudVO(String direccion, String fecha, String hora, String mensaje,
 				String estado, String servicio, String usuario) {
 		this.direccion = direccion;
 		this.fecha = fecha;
@@ -36,16 +35,16 @@ public class SolicitudVO {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public Time getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(Time hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	public String getMensaje() {

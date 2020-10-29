@@ -59,8 +59,8 @@ public class SolicitudFacade {
 			
 			PreparedStatement nuevoU = conn.prepareStatement(tablaSolicitud);
 			nuevoU.setString(1, solicitude.getDireccion());
-			nuevoU.setDate(2, solicitude.getFecha());
-			nuevoU.setTime(3, solicitude.getHora());
+			nuevoU.setString(2, solicitude.getFecha());
+			nuevoU.setString(3, solicitude.getHora());
 			nuevoU.setString(4, solicitude.getMensaje());
 			nuevoU.setString(5, solicitude.getEstado());
 			nuevoU.setInt(6, solicitude.getIdSolicitud());
