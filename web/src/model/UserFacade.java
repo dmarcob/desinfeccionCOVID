@@ -53,7 +53,7 @@ public class UserFacade {
 		boolean result = false;
 		Connection conn = null;
 	
-	try {
+	  try {
 		conn = ConnectionManager.getConnection();
 		
 		PreparedStatement countPs = conn.prepareStatement(countByPerfil);

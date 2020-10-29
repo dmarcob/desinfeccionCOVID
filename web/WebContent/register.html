@@ -2,6 +2,7 @@
 <html lang="en" class="wide wow-animation">
 <head>
 <title>Home</title>
+<link rel="Stylesheet" href="css/validar_registro.css">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,26 +110,42 @@
               <div class="resp-tabs-container offset-top-40">
                 <div class="animated fadeIn">
                   <div class="offset-top-25">
-                    <form class="rd-mailform text-left">
+                    <form class="rd-mailform text-left" id=formulario-registro>
                       <div class="form-group">
-                        <label for="register-username" class="form-label-outside">Nombre usuario</label>
-                        <input id="register-username" type="text" name="username" data-constraints="@Required" class="form-control">
+                        <label for="register-username" class="form-label-outside">Nickname</label>
+                        <input id="register-nickname" type="text" name="nickname" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Nombre completo</label>
+                        <input id="register-nombre" type="text" name="nombre" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Apellidos</label>
+                        <input id="register-apellidos" type="text" name="apellidos" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Dirección oficina</label>
+                        <input id="register-direccion" type="text" name="direccion" class="form-control">
                       </div>
                       <div class="form-group offset-top-18">
                         <label for="register-email" class="form-label-outside">E-Mail</label>
-                        <input id="register-email" type="email" name="email" data-constraints="@Email @Required" class="form-control">
+                        <input id="register-email" type="email" name="email" class="form-control">
+                      </div>
+                      <div class="form-group offset-top-18">
+                        <label for="register-email" class="form-label-outside">Telefono</label>
+                        <input id="register-telefono" type="tel" name="telefono" pattern="[0-9]{9}"  class="form-control">
                       </div>
                       <div class="form-group offset-top-18">
                         <label for="register-password" class="form-label-outside">Contraseña</label>
-                        <input id="register-password" type="password" name="password" data-constraints="@Required" class="form-control">
+                        <input id="register-password" type="password" name="password" class="form-control">
                       </div>
                       <div class="form-group offset-top-18">
                         <label for="register-confirm-password" class="form-label-outside">Confirmar contraseña</label>
-                        <input id="register-confirm-password" type="password" name="password" data-constraints="@Required" class="form-control">
+                        <input id="register-confirm-password" type="password" name="confirm-password" class="form-control">
                       </div>
                       <div class="offset-top-18 text-center">
-			  <a href="login.html" class="btn btn-info" role="button">Registrar</a>
-			  <!--<a href="login.html"><button type="submit" class="btn btn-primary">Registrar</button></a>-->
+			 <!--  <a href="login.html" class="btn btn-info" type="submit" role="button">Registrar</a> -->
+			  			<button type="submit" class="btn btn-primary">Registrar</button>
                       </div>
                       <div class="group group-middle offset-top-30 text-center text-xs-left">
 
@@ -244,6 +261,10 @@
 </div>
 <script src="js/core.min.js"></script>
 <script src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="js/validar_registro.js"></script>
+
 </body>
 <!-- End Google Tag Manager -->
 </html>
