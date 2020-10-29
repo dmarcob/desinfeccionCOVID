@@ -52,7 +52,7 @@ public class Register extends HttpServlet {
 				dao.modificarPerfil(nuevo);
 				user.setPwd(null);
 				request.getSession().setAttribute("user",user);
-				request.getRequestDispatcher("register.jsp").forward(request, response);
+				request.getRequestDispatcher("services_log.jsp").forward(request, response);
 			} else {
 				request.setAttribute("error", "usuario existente");
 				request.getRequestDispatcher("register.jsp").forward(request, response);

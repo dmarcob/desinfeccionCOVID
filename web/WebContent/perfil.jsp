@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
+<link rel="Stylesheet" href="css/validar_registro.css">
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="css/css.css?family=Open+Sans:400,700,400italic,600italic,900">
 <link rel="stylesheet" href="css/style.css">
@@ -102,125 +103,70 @@
       </nav>
     </div>
   </header>
-  <main class="page-content">
+ <main class="page-content">
     <section class="section-40 section-lg-64 bg-gray-lighter">
       <div class="breadcrumbs-wrap">
         <div class="shell text-center">
           <div class="wrap-sm-justify-horizontal">
             <div class="text-sm-left">
-              <h1>Servicios</h1>
+              <h1>Perfil usuario</h1>
             </div>
             <div class="offset-top-22 offset-sm-top-0 text-sm-right">
               <ul class="breadcrumbs-custom">
-                <li><a href="index_log.html">Home</a></li>
-                <li class="active">Servicios</li>
-
-              </ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Make an Appointment</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section-60 section-sm-top-90 section-sm-bottom-110">
+    <section class="section-60 section-sm-bottom-90">
       <div class="shell">
-        <div class="range range-sm-right">
-          <div class="cell-xs-12">
-            <div data-custom-hash="true" class="responsive-tabs responsive-tabs-default responsive-tabs-vertical responsive-tabs-vertical-1 responsive-tabs-primary">
-              <ul class="resp-tabs-list">
-                <li><a href="#moqueta">Moqueta</a></li>
-                <li><a href="#baldosa">Baldosa</a></li>
-                <li><a href="#appliance-parts">Parque</a></li>
-              </ul>
-              <div class="resp-tabs-container">
-                <div class="tab">
-                  <div class="box-custom-variant-1">
-                    <div class="box-header">
-                      <h3>Moqueta</h3>
-                    </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
-                    <div class="box-content"><a href="appointment.html" class="btn btn-primary">SOLICITAR</a>
-                      <h4>300 € </h4>
-                    </div>
-                  </div>
-                  <p>Ice makers are kitchen appliances that are commonly found in two formats; those that are found attached to a refrigerator unit and those that stand alone and function solely to produce and store ice. The function of an ice maker is pretty straightforward; it mainly turns water into ice. Its secondary function is to store the ice in cubes or in blocks until they are ready to be used. Majority of US households prefer refrigerator units that feature ice makers. Models that are not equipped with one are eventually upgraded by adding a smaller unit and are then integrated for efficiency and optimum functionality.</p>
+        <div class="range">
+          <div class="cell-xs-12 offset-top-60">
+              <form class="rd-mailform text-left" id=formulario-perfil method="get" action="actualizar_perfil">
+                    
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Nombre completo</label>
+                        <input id="register-nombre" type="text" name="nombre" class="form-control" value=<%= request.getAttribute("nombre") %>
+                        >
+                      </div>
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Apellidos</label>
+                        <input id="register-apellidos" type="text" name="apellidos" class="form-control" value=<%= request.getAttribute("apellidos") %>>
+                      </div>
+                      <div class="form-group">
+                        <label for="register-username" class="form-label-outside">Direccion oficina</label>
+                        <input id="register-direccion" type="text" name="direccion" class="form-control" value=<%= request.getAttribute("direccion") %>>
+                      </div>
+                      <div class="form-group offset-top-18">
+                        <label for="register-email" class="form-label-outside">E-Mail</label>
+                        <input id="register-email" type="email" name="email" class="form-control" value=<%= request.getAttribute("email") %>>
+                      </div>
+                      <div class="form-group offset-top-18">
+                        <label for="register-email" class="form-label-outside">Telefono</label>
+                        <input id="register-telefono" type="tel" name="telefono" pattern="[0-9]{9}"  class="form-control" value=<%= request.getAttribute("telefono") %>>
+                      </div>
+               		  <br>
+			 <div class="p-3 row-md-2">
+              <div class="row offtop-sm-12 bg-gray-lighter">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-round btn-danger btn-lg btn-block">Eliminar cuenta</button>
                 </div>
-                <div class="tab">
-                  <div class="box-custom-variant-1">
-                    <div class="box-header">
-                      <h3>Baldosa</h3>
-                    </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
-                    <div class="box-content"><a href="appointment.html"  class="btn btn-primary">SOLICITAR</a>
-                      <h4>200 € </h4>
-                    </div>
-                  </div>
-                  <p>Times are tough in todays economy and most families have to cut back on expenses. Nearly every family is abiding by a strict budget and everyone is tightening their belts to make ends meet. San Diego is one area of the country that has been hit the hardest. Restaurants are one of the first things that people cut from their budget. Getting your cooking equipment in tip top shape has never been more important since families are spending more time cooking at home. Most kitchen appliances need regular maintenance to ensure they work for a lifetime.</p>
-                </div>
-                <div class="tab">
-                  <div class="box-custom-variant-1">
-                    <div class="box-header">
-                      <h3>Parque</h3>
-                    </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
-                    <div class="box-content"><a href="appointment.html"  class="btn btn-primary">SOLICITAR</a>
-                        <h4>100 € </h4>
-                    </div>
-                  </div>
-                  <p>Are you currently scouring the Internet for quality appliance parts?</p>
-                  <p>The majority of us lead busy and hectic schedules on a daily basis. Our time is divided between numerous activities such as work, family, daily chores, recreation, and leisure. The modern conveniences delivered by home appliances and similar equipment have made it possible for each and every one of us to appreciate and enjoy life more. The luxury and extra time that we get from operating such devices at home translate to more of lifes meaningful moments. And these are also the main reasons why our worlds crumble when appliances break down and encounter damage. But in these difficult times, you just cant replace these items immediately. Hiring a professional to restore appliances to its previous working condition just wont make the cut either. Most of the appliance dilemmas are caused by nonworking parts that need replacement. Why spend more when you can get the same results for less? This is where Service Center steps in.</p>
-                  <p> Do-it-yourselfers take pride in the fact that they can create and fix things without the assistance from others. By using what little skill one has and combining that with smarts, DIY-ers create wonderful and functional things all the time. When it comes to appliance parts, Service Center is a do-it-yourselfer haven. It houses thousands upon thousands of spare parts and accessories from all the brands that sell home appliances. No matter how big or small your need may be, Service Center can definitely help you with your home appliance problems. </p>
-                </div>
-
-            <div class="range offset-top-55 offset-sm-top-88">
-              <div class="cell-xs-12">
-                <h5>Get In Touch</h5>
-                <hr>
-                <form data-form-output="form-output-global" data-form-type="contact" method="post" action="#" class="rd-mailform">
-                  <div class="range">
-                    <div class="cell-md-6">
-                      <div class="form-group">
-                        <label for="contact-first-name" class="form-label-outside">First name</label>
-                        <input id="contact-first-name" type="text" name="first-name" data-constraints="@Required" class="form-control">
-                      </div>
-                    </div>
-                    <div class="cell-md-6 offset-top-18 offset-md-top-0">
-                      <div class="form-group">
-                        <label for="contact-last-name" class="form-label-outside">Last name</label>
-                        <input id="contact-last-name" type="text" name="last-name" data-constraints="@Required" class="form-control">
-                      </div>
-                    </div>
-                    <div class="cell-md-6 offset-top-18">
-                      <div class="form-group">
-                        <label for="contact-email" class="form-label-outside">E-mail</label>
-                        <input id="contact-email" type="email" name="email" data-constraints="@Email @Required" class="form-control">
-                      </div>
-                    </div>
-                    <div class="cell-md-6 offset-top-18">
-                      <div class="form-group">
-                        <label for="contact-phone" class="form-label-outside">Phone</label>
-                        <input id="contact-phone" type="text" name="phone" data-constraints="@Required @Numeric" class="form-control">
-                      </div>
-                    </div>
-                    <div class="cell-xs-12 offset-top-18">
-                      <div class="form-group">
-                        <label for="contact-message" class="form-label-outside">Message</label>
-                        <textarea id="contact-message" name="message" data-constraints="@Required" class="form-control"></textarea>
-                      </div>
-                    </div>
-                    <div class="cell-xs-12 offset-top-30">
-                      <button type="submit" class="btn btn-primary">Send Message</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-round btn-primary btn-lg btn-block">Actualizar perfil</button>
+                </div> 
           </div>
         </div>
+                    </form>
+            
+            
+             
       </div>
     </section>
   </main>
-  <footer class="page-foot bg-gray-dark">
+   <footer class="page-foot bg-gray-dark">
     <div class="shell text-center text-sm-left">
       <div class="range range-sm-center">
         <div class="cell-sm-10 cell-md-12">
@@ -319,6 +265,10 @@
 </div>
 <script src="js/core.min.js"></script>
 <script src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="js/validar_perfil.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </body>
 <!-- End Google Tag Manager -->
 </html>

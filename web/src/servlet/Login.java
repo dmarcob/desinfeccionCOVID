@@ -40,12 +40,21 @@ public class Login extends HttpServlet {
 		} else {
 			System.out.print("\nsino!\n");
 			UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"), false);
-			boolean valido = dao.validateUser(user);
-			if (valido) {
+			int valido = dao.validateUser(user);
+			if (valido > 0) {
 				Perfil_usuarioVO n;
 				user.setPwd(null);
 				request.getSession().setAttribute("user",user);
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.setAttribute("nombre", user.getnickname());
+				if (valido == 2) {
+					System.out.println("SOY ADMIN");
+					request.getRequestDispatcher("historialP.jsp").forward(request, response);
+
+				} else {
+					System.out.println("NO SOY NADAAA");
+
+					request.getRequestDispatcher("services_log.jsp").forward(request, response);
+				}
 			} else {
 				request.setAttribute("error", "Contraseña invalida o usuario no existente");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
