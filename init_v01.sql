@@ -1,10 +1,10 @@
--- DROP SCHEMA "WEB";
+-- DROP SCHEMA "web";
 
-CREATE SCHEMA "WEB" AUTHORIZATION postgres;
+CREATE SCHEMA "web" AUTHORIZATION postgres;
 
--- DROP TYPE "WEB"."_USER";
+-- DROP TYPE "web"."_USER";
 
-CREATE TYPE "WEB"."_USER" (
+CREATE TYPE "web"."_USER" (
 	INPUT = array_in,
 	OUTPUT = array_out,
 	RECEIVE = array_recv,
@@ -13,15 +13,15 @@ CREATE TYPE "WEB"."_USER" (
 	ALIGNMENT = 8,
 	STORAGE = any,
 	CATEGORY = A,
-	ELEMENT = "WEB".usuario,
+	ELEMENT = "web".usuario,
 	DELIMITER = ',');
--- "WEB".usuario definition
+-- "web".usuario definition
 
 -- Drop table
 
--- DROP TABLE "WEB".usuario;
+-- DROP TABLE "web".usuario;
 
-CREATE TABLE "WEB".usuario (
+CREATE TABLE "web".usuario (
 	nickname varchar(20) NOT NULL,
 	pwd varchar(32) NOT NULL,
 	"admin" bool NOT NULL,
@@ -29,13 +29,13 @@ CREATE TABLE "WEB".usuario (
 );
 
 
--- "WEB".servicios definition
+-- "web".servicios definition
 
 -- Drop table
 
--- DROP TABLE "WEB".servicios;
+-- DROP TABLE "web".servicios;
 
-CREATE TABLE "WEB".servicios (
+CREATE TABLE "web".servicios (
 	nombre varchar(20) NOT NULL,
 	descripcion varchar(2000) NOT NULL,
 	precio int4 NOT NULL,
@@ -43,13 +43,13 @@ CREATE TABLE "WEB".servicios (
 );
 
 
--- "WEB".perfil_usuario definition
+-- "web".perfil_usuario definition
 
 -- Drop table
 
--- DROP TABLE "WEB".perfil_usuario;
+-- DROP TABLE "web".perfil_usuario;
 
-CREATE TABLE "WEB".perfil_usuario (
+CREATE TABLE "web".perfil_usuario (
 	direccion varchar(100) NOT NULL,
 	email varchar(30) NOT NULL,
 	telefono varchar(9) NOT NULL,
@@ -58,17 +58,17 @@ CREATE TABLE "WEB".perfil_usuario (
 	nickname varchar(20) NOT NULL,
 	iduser int4 NOT NULL,
 	CONSTRAINT perfil_user_pk PRIMARY KEY (nickname, iduser),
-	CONSTRAINT perfil_user_fk FOREIGN KEY (nickname) REFERENCES "WEB".usuario(nickname) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED
+	CONSTRAINT perfil_user_fk FOREIGN KEY (nickname) REFERENCES "web".usuario(nickname) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED
 );
 
 
--- "WEB".solicitud definition
+-- "web".solicitud definition
 
 -- Drop table
 
--- DROP TABLE "WEB".solicitud;
+-- DROP TABLE "web".solicitud;
 
-CREATE TABLE "WEB".solicitud (
+CREATE TABLE "web".solicitud (
 	direccion varchar(100) NOT NULL,
 	fecha date NOT NULL,
 	hora time NOT NULL,
@@ -78,8 +78,8 @@ CREATE TABLE "WEB".solicitud (
 	servicio varchar(20) NOT NULL,
 	usuario varchar(20) NOT NULL,
 	CONSTRAINT solicitud_pk PRIMARY KEY (idsolicitud),
-	CONSTRAINT solicitud_fk FOREIGN KEY (servicio) REFERENCES "WEB".servicios(nombre) DEFERRABLE INITIALLY DEFERRED,
-	CONSTRAINT solicitud_fk_1 FOREIGN KEY (usuario) REFERENCES "WEB".usuario(nickname)
+	CONSTRAINT solicitud_fk FOREIGN KEY (servicio) REFERENCES "web".servicios(nombre) DEFERRABLE INITIALLY DEFERRED,
+	CONSTRAINT solicitud_fk_1 FOREIGN KEY (usuario) REFERENCES "web".usuario(nickname)
 );
 
 

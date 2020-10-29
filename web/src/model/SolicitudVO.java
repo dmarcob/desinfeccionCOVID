@@ -1,18 +1,20 @@
 package model;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 
-public class Solicitud {
+public class SolicitudVO {
 	static Integer idSolicitud = 1;
 	String direccion;
 	Date fecha;
-	Date hora;
+	Time hora;
 	String mensaje;
 	String estado;
 	String servicio;
 	String usuario;
+	Integer Id;
 	
-	public Solicitud(String direccion, Date fecha, Date hora, String mensaje,
+	public SolicitudVO(String direccion, Date fecha, Time hora, String mensaje,
 				String estado, String servicio, String usuario) {
 		this.direccion = direccion;
 		this.fecha = fecha;
@@ -21,14 +23,12 @@ public class Solicitud {
 		this.estado = estado;
 		this.servicio = servicio;
 		this.usuario = usuario;
+		this.Id = idSolicitud;
 		idSolicitud++;
 	}
 	
 	public Integer getIdSolicitud() {
-		return idSolicitud;
-	}
-	public void setIdSolicitud(Integer idSolicitud) {
-		this.idSolicitud = idSolicitud;
+		return Id;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -42,10 +42,10 @@ public class Solicitud {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Date getHora() {
+	public Time getHora() {
 		return hora;
 	}
-	public void setHora(Date hora) {
+	public void setHora(Time hora) {
 		this.hora = hora;
 	}
 	public String getMensaje() {

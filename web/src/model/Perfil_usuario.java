@@ -8,6 +8,7 @@ public class Perfil_usuario {
 	String telefono;
 	String nombre;
 	String apellidos;
+	Integer Id;
 	
 	public Perfil_usuario(String nickName, String direccion, String email,
 			String telefono, String nombre, String apellidos) {
@@ -17,14 +18,12 @@ public class Perfil_usuario {
 		this.telefono =telefono;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
+		this.Id = idUser;
 		idUser++;
 	}
 	
-	public static Integer getIdUser() {
-		return idUser;
-	}
-	public static void setIdUser(Integer idUser) {
-		Perfil_usuario.idUser = idUser;
+	public Integer getIdUser() {
+		return Id;
 	}
 	public String getNickName() {
 		return nickName;

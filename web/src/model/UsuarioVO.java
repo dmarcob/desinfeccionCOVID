@@ -58,7 +58,7 @@ public class UsuarioVO {
 		this.admin = admin;
 	}
 	
-	private String hash(String pwd) {
+	public String hash(String pwd) {
 		Integer hash = 7;
 		for(int i = 0; i < pwd.length(); i++) {
 			hash = hash*31 + pwd.charAt(i);
