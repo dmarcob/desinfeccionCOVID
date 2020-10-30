@@ -33,24 +33,26 @@ public class Perfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		if (request.getSession().getAttribute("user") == null) { // No hay usuario logado
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
-			UserFacade dao = new UserFacade();
-			Perfil_usuarioVO perfil = null;
-			UsuarioVO user = (UsuarioVO) request.getSession().getAttribute("user");
-			System.out.println("user ->" + user.getnickname());
-				perfil = dao.getPerfil(user.getnickname());
-			
-			System.out.println("perfil ->" + perfil.getNombre());
-			request.setAttribute("nombre", perfil.getNombre());
-			request.setAttribute("apellidos", perfil.getApellidos());
-			request.setAttribute("direccion", perfil.getDireccion());
-			request.setAttribute("email", perfil.getEmail());
-			request.setAttribute("telefono", perfil.getTelefono());			
-			request.getRequestDispatcher("perfil.jsp").forward(request, response);
-			
-		}
+			if (request.getSession().getAttribute("user") == null) { // No hay usuario logado
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			} else {
+				//Usuario logeado
+				if (request.getParameter("nombre") != null) {
+					//Usuario ha actualizado su información de perfil
+					UserFacade dao = new UserFacade();
+					UsuarioVO user = (UsuarioVO) request.getSession().getAttribute("user");
+					Perfil_usuarioVO perfil = new Perfil_usuarioVO(user.getnickname(), 
+						request.getParameter("direccion"), request.getParameter("email"), 
+						request.getParameter("telefono"), request.getParameter("nombre"), 
+						request.getParameter("apellidos"));	
+					dao.updatePerfil(perfil);
+					//Se actualiza el perfil de la sesión
+					request.getSession().removeAttribute("perfil");
+					request.getSession().setAttribute("perfil",perfil);
+				} 
+				//Haya o no actualizado la información de perfil, se muestra el perfil actual de la sesión
+				request.getRequestDispatcher("perfil.jsp").forward(request, response);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -153,7 +153,7 @@
                       </div>
                       <div class="group group-middle offset-top-30 text-center text-xs-left">
 
-                        <p> ¿Ya tienes cuenta? <a href="login.html">Inicia sesion aqui­</a></p>
+                        <p> ¿Ya tienes cuenta? <a href="login.jsp">Inicia sesion aqui­</a></p>
 
                       </div>
                     </form>

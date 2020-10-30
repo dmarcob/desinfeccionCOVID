@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import db.ConnectionManager;
 
 public class UserFacade {
 	
 	private static String tablaUsuario = "INSERT INTO web.usuario(nickname, pwd, admin) VALUES(?, ?, ?)";
-	private static String nuevaTablaPerfil = "INSERT INTO web.perfil_usuario(direccion, email, telefono, nombre, apellidos, nickname, iduser) VALUES(?, ?, ?, ?, ?, ?, ?)";
+	private static String nuevaTablaPerfil = "INSERT INTO web.perfil_usuario(direccion, email, telefono, nombre, apellidos, nickname, iduser) VALUES(?, ?, ?, ?, ?, ?, DEFAULT)";
 	private static String modificarTablaPerfil = "UPDATE web.perfil_usuario SET direccion=?, email=?, telefono=?, nombre=?, apellidos=? WHERE nickname=?";
 	private static String countByUserName = "SELECT count(*) cuenta FROM usuario WHERE nickname = ?";
 	private static String countByPerfil = "SELECT count(*) cuenta FROM web.perfil_usuario WHERE nickname = ?";
@@ -108,7 +110,6 @@ public class UserFacade {
 			nuevoP.setString(4, perf.getNombre());
 			nuevoP.setString(5, perf.getApellidos());
 			nuevoP.setString(6, perf.getNickName());
-			nuevoP.setInt(7, perf.getIdUser());
 		}else {
 			nuevoP = conn.prepareStatement(modificarTablaPerfil);
 			nuevoP.setString(1, perf.getDireccion());

@@ -3,7 +3,6 @@ package model;
 
 
 public class SolicitudVO {
-	static Integer idSolicitud = 1;
 	String direccion;
 	String fecha;
 	String hora;
@@ -11,7 +10,6 @@ public class SolicitudVO {
 	String estado;
 	String servicio;
 	String usuario;
-	Integer Id;
 	
 	public SolicitudVO(String direccion, String fecha, String hora, String mensaje,
 				String estado, String servicio, String usuario) {
@@ -22,13 +20,8 @@ public class SolicitudVO {
 		this.estado = estado;
 		this.servicio = servicio;
 		this.usuario = usuario;
-		this.Id = idSolicitud;
-		idSolicitud++;
 	}
 	
-	public Integer getIdSolicitud() {
-		return Id;
-	}
 	public String getDireccion() {
 		return direccion;
 	}

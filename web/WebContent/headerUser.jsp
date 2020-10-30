@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ page import="model.UsuarioVO"%>
   <header class="page-head">
     <div class="rd-navbar-wrap">
       <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="199px" data-lg-stick-up-offset="199px" class="rd-navbar rd-navbar-corporate rd-navbar-dark">
@@ -14,7 +15,7 @@
           <div class="rd-navbar-middle-panel">
             <div class="rd-navbar-panel">
               <button data-rd-navbar-toggle=".rd-navbar-outer-panel" class="rd-navbar-toggle"><span></span></button>
-              <a href="index.html" class="rd-navbar-brand">
+              <a href="services_log.jsp" class="rd-navbar-brand">
               <div class="rd-navbar-fixed--hidden"><img src="images/logo-desinfecciones-megalo.png" alt="" width="250" height="40"/> </div>
               <div class="rd-navbar-fixed--visible"><img src="images/logo-desinfecciones-megalo.png" alt="" width="250" height="40"/> </div>
               </a> </div>
@@ -60,12 +61,12 @@
           <div class="rd-navbar-outer-panel">
             <div class="rd-navbar-nav-wrap">
               <ul class="rd-navbar-nav">
-                <li class="active"><a href="index_log.html">Home</a> </li>
-                <li><a href="services_log.html">Servicios</a></li>
+                <li class="active"><a href="services_log.jsp">Home</a> </li>
+                <li><a href="services_log.jsp">Servicios</a></li>
 		<li class="nav-item dropdown no-arrow">
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-					<%= request.getAttribute("nombre") %>
+					<%= ((UsuarioVO)request.getSession().getAttribute("user")).getnickname()%>
 					</span>
                    <span class="icon icon-sm-variant-2 icon-primary fa-user"></span>
                  </a>
@@ -75,12 +76,12 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cuenta
                   </a>
-                  <a class="dropdown-item" href="historialU.html">
+                  <a class="dropdown-item" href="listar_historial_usuario">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Historial solicitudes
                      </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="index.html">
+                  <a class="dropdown-item" href="services_log.jsp">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                   </a>

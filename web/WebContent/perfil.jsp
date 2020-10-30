@@ -16,6 +16,7 @@
 		<![endif]-->
 </head>
 <body>
+<%@ page import="model.Perfil_usuarioVO"%>
 <div class="page">
   <header class="page-head">
     <div class="rd-navbar-wrap">
@@ -24,7 +25,7 @@
           <div class="rd-navbar-middle-panel">
             <div class="rd-navbar-panel">
               <button data-rd-navbar-toggle=".rd-navbar-outer-panel" class="rd-navbar-toggle"><span></span></button>
-              <a href="index.html" class="rd-navbar-brand">
+              <a href="servicios_log.jsp" class="rd-navbar-brand">
               <div class="rd-navbar-fixed--hidden"><img src="images/logo-desinfecciones-megalo.png" alt="" width="250" height="40"/> </div>
               <div class="rd-navbar-fixed--visible"><img src="images/logo-desinfecciones-megalo.png" alt="" width="250" height="40"/> </div>
               </a> </div>
@@ -70,12 +71,12 @@
           <div class="rd-navbar-outer-panel">
             <div class="rd-navbar-nav-wrap">
               <ul class="rd-navbar-nav">
-                <li class="active"><a href="index_log.html">Home</a> </li>
-                <li><a href="services_log.html">Servicios</a></li>
+                <li class="active"><a href="services_log.jsp">Home</a> </li>
+                <li><a href="services_log.jsp">Servicios</a></li>
 		<li class="nav-item dropdown no-arrow">
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-					<%= request.getAttribute("nombre") %>
+					<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getNickName() %>
 					</span>
                    <span class="icon icon-sm-variant-2 icon-primary fa-user"></span>
                  </a>
@@ -125,28 +126,37 @@
       <div class="shell">
         <div class="range">
           <div class="cell-xs-12 offset-top-60">
-              <form class="rd-mailform text-left" id=formulario-perfil method="get" action="actualizar_perfil">
+              <form class="rd-mailform text-left" id=formulario-perfil method="get" action="perfil">
                     
                       <div class="form-group">
                         <label for="register-username" class="form-label-outside">Nombre completo</label>
-                        <input id="register-nombre" type="text" name="nombre" class="form-control" value=<%= request.getAttribute("nombre") %>
+                        <input id="register-nombre" type="text" name="nombre" class="form-control" 
+                        		value=<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getNombre() %>
                         >
                       </div>
                       <div class="form-group">
                         <label for="register-username" class="form-label-outside">Apellidos</label>
-                        <input id="register-apellidos" type="text" name="apellidos" class="form-control" value=<%= request.getAttribute("apellidos") %>>
+                        <input id="register-apellidos" type="text" name="apellidos" class="form-control" 
+                        		value=<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getApellidos() %>
+                        >
                       </div>
                       <div class="form-group">
                         <label for="register-username" class="form-label-outside">Direccion oficina</label>
-                        <input id="register-direccion" type="text" name="direccion" class="form-control" value=<%= request.getAttribute("direccion") %>>
+                        <input id="register-direccion" type="text" name="direccion" class="form-control" 
+								value=<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getDireccion() %>
+						>
                       </div>
                       <div class="form-group offset-top-18">
                         <label for="register-email" class="form-label-outside">E-Mail</label>
-                        <input id="register-email" type="email" name="email" class="form-control" value=<%= request.getAttribute("email") %>>
+                        <input id="register-email" type="email" name="email" class="form-control" 
+                        value=<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getEmail() %>
+                        >
                       </div>
                       <div class="form-group offset-top-18">
                         <label for="register-email" class="form-label-outside">Telefono</label>
-                        <input id="register-telefono" type="tel" name="telefono" pattern="[0-9]{9}"  class="form-control" value=<%= request.getAttribute("telefono") %>>
+                        <input id="register-telefono" type="tel" name="telefono" pattern="[0-9]{9}"  class="form-control" 
+                        value=<%= ((Perfil_usuarioVO)request.getSession().getAttribute("perfil")).getTelefono() %>
+                        >
                       </div>
                		  <br>
 			 <div class="p-3 row-md-2">

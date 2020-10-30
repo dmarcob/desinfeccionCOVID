@@ -4,16 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import db.ConnectionManager;
 
 public class SolicitudFacade {
 	
 	private static String tablaServicios = "INSERT INTO web.servicios(nombre, descripcion, precio) VALUES(?, ?, ?)";
-	private static String tablaSolicitud = "INSERT INTO web.solicitud(direccion, fecha, hora, mensaje, estado, idsolicitud, servicio, usuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-	private static String selectByName = "SELECT * FROM web.solicitud WHERE nickname=?";
+	private static String tablaSolicitud = "INSERT INTO web.solicitud(direccion, fecha, hora, mensaje, estado, idsolicitud, servicio, usuario) VALUES(?, ?, ?, ?, ?, DEFAULT, ?, ?)";
+	private static String selectByUsuarioAndOffset = "SELECT * FROM web.solicitud WHERE usuario=? ORDER BY idsolicitud DESC LIMIT ? OFFSET ?";
 	private static String selectByEstado = "SELECT * FROM web.solicitud WHERE estado=?";
+	private static String countByUsuario = "SELECT count(*) cuenta FROM web.solicitud WHERE usuario = ?";
+
 	//private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
 	
 	/** * Busca un registro en la tabla DEMO por ID * 
@@ -63,9 +66,8 @@ public class SolicitudFacade {
 			nuevoU.setString(3, solicitude.getHora());
 			nuevoU.setString(4, solicitude.getMensaje());
 			nuevoU.setString(5, solicitude.getEstado());
-			nuevoU.setInt(6, solicitude.getIdSolicitud());
-			nuevoU.setString(7, solicitude.getServicio());
-			nuevoU.setString(8, solicitude.getUsuario());
+			nuevoU.setString(6, solicitude.getServicio());
+			nuevoU.setString(7, solicitude.getUsuario());
 			
 			nuevoU.executeUpdate();
 			
@@ -81,18 +83,28 @@ public class SolicitudFacade {
 		return result;
 	}
 	
-	public ResultSet historialUsuario(UsuarioVO user) throws SQLException {
+	public List<SolicitudVO> historialUsuario(UsuarioVO user, int paginaActual, int solicitudesPorPagina) throws SQLException {
 		ResultSet result = null;
 		Connection conn = null;
+		List<SolicitudVO> l = null;
 		
 		try {
 			conn = ConnectionManager.getConnection();
-			
-			
-			PreparedStatement solicitudesN = conn.prepareStatement(selectByName);
+			int offset = (paginaActual - 1) * solicitudesPorPagina;
+			PreparedStatement solicitudesN = conn.prepareStatement(selectByUsuarioAndOffset);
 			solicitudesN.setString(1, user.getnickname());
-			
+			solicitudesN.setInt(2, solicitudesPorPagina);
+			solicitudesN.setInt(3, offset);
+			System.out.println("offset ->"+ offset);
+
 			result = solicitudesN.executeQuery();
+			l = new ArrayList();
+			while (result.next()) {
+				l.add(new SolicitudVO(result.getString("direccion"), result.getString("fecha"), 
+								result.getString("hora"),result.getString("mensaje"),
+								result.getString("estado"), result.getString("servicio"), result.getString("usuario")));
+				System.out.println(result.getString("direccion"));
+			}
 			
 		} catch(SQLException se) {
 			se.printStackTrace();  
@@ -102,7 +114,7 @@ public class SolicitudFacade {
 		} finally {
 			db.ConnectionManager.releaseConnection(conn); 
 		}
-		return result;
+		return l;
 	}
 	
 	public ResultSet historialEstado(String estado) throws SQLException {
@@ -127,6 +139,23 @@ public class SolicitudFacade {
 			db.ConnectionManager.releaseConnection(conn); 
 		}
 		return result;
+	}
+	
+	public int numSolicitudesUsuario(UsuarioVO usuario) {
+		int resultado = 0;
+		Connection conn = null;	
+		try {
+			conn = ConnectionManager.getConnection();
+			PreparedStatement solicitudesU = conn.prepareStatement(countByUsuario);
+			solicitudesU.setString(1, usuario.getnickname());
+			ResultSet countRs = solicitudesU.executeQuery();
+			countRs.next();
+			resultado = countRs.getInt(1);
+			System.out.println("Número de solicitudes usuario: " + resultado);
+		} catch(SQLException se) {
+			se.printStackTrace();  	
+		}
+		return resultado;
 	}
 }
 

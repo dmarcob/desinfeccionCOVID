@@ -46,12 +46,13 @@ public class Register extends HttpServlet {
 				//
 				System.out.print("\n NO EXISTE\n");
 				UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"));
-				Perfil_usuarioVO nuevo = new Perfil_usuarioVO(request.getParameter("nickname"), request.getParameter("direccion"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("nombre"), request.getParameter("apellidos"));		
+				Perfil_usuarioVO perfil = new Perfil_usuarioVO(request.getParameter("nickname"), request.getParameter("direccion"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("nombre"), request.getParameter("apellidos"));		
 				
 				dao.addUser(user);
-				dao.modificarPerfil(nuevo);
+				dao.modificarPerfil(perfil);
 				user.setPwd(null);
 				request.getSession().setAttribute("user",user);
+				request.getSession().setAttribute("perfil",perfil);
 				request.getRequestDispatcher("services_log.jsp").forward(request, response);
 			} else {
 				request.setAttribute("error", "usuario existente");

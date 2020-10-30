@@ -1,14 +1,12 @@
 package model;
 
 public class Perfil_usuarioVO {
-	static Integer idUser = 1; 
 	String nickName;
 	String direccion;
 	String email;
 	String telefono;
 	String nombre;
 	String apellidos;
-	Integer Id;
 	
 	public Perfil_usuarioVO(String nickName, String direccion, String email,
 			String telefono, String nombre, String apellidos) {
@@ -18,13 +16,8 @@ public class Perfil_usuarioVO {
 		this.telefono =telefono;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.Id = idUser;
-		idUser++;
 	}
 	
-	public Integer getIdUser() {
-		return Id;
-	}
 	public String getNickName() {
 		return nickName;
 	}
