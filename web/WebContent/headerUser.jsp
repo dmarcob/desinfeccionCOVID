@@ -81,7 +81,7 @@
                   Historial solicitudes
                      </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="services_log.jsp">
+                  <a class="dropdown-item" href="index.html">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                   </a>

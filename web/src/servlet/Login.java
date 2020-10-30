@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 				user.setPwd(null);
 				if (valido == 2) {
 					//Usuario existente y rol administrador
-					request.getRequestDispatcher("historialP.jsp").forward(request, response);
+					request.getRequestDispatcher("listar_historial_admin").forward(request, response);
 
 				} else {
 					//Usuario existente y rol cliente

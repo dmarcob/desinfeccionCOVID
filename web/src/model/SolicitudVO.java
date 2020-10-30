@@ -10,6 +10,7 @@ public class SolicitudVO {
 	String estado;
 	String servicio;
 	String usuario;
+	int id;
 	
 	public SolicitudVO(String direccion, String fecha, String hora, String mensaje,
 				String estado, String servicio, String usuario) {
@@ -63,6 +64,12 @@ public class SolicitudVO {
 	}
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	public int getId() {
+		return this.id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

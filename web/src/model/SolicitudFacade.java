@@ -13,9 +13,12 @@ public class SolicitudFacade {
 	
 	private static String tablaServicios = "INSERT INTO web.servicios(nombre, descripcion, precio) VALUES(?, ?, ?)";
 	private static String tablaSolicitud = "INSERT INTO web.solicitud(direccion, fecha, hora, mensaje, estado, idsolicitud, servicio, usuario) VALUES(?, ?, ?, ?, ?, DEFAULT, ?, ?)";
+	private static String modificarSolicitud = "UPDATE web.solicitud SET estado=? WHERE idsolicitud=?";
 	private static String selectByUsuarioAndOffset = "SELECT * FROM web.solicitud WHERE usuario=? ORDER BY idsolicitud DESC LIMIT ? OFFSET ?";
-	private static String selectByEstado = "SELECT * FROM web.solicitud WHERE estado=?";
+	private static String selectByEstado = "SELECT * FROM web.solicitud WHERE estado=? ORDER BY idsolicitud ASC LIMIT ? OFFSET ?";
 	private static String countByUsuario = "SELECT count(*) cuenta FROM web.solicitud WHERE usuario = ?";
+	private static String countByEstado = "SELECT count(*) cuenta FROM web.solicitud WHERE estado = ?";
+
 
 	//private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
 	
@@ -83,6 +86,34 @@ public class SolicitudFacade {
 		return result;
 	}
 	
+	public boolean modificarSolicitud(String estado, int idSolicitud) throws SQLException {
+		boolean result = false;
+		Connection conn = null;
+		
+		try {
+			conn = ConnectionManager.getConnection();
+			
+			
+			PreparedStatement nuevoU = conn.prepareStatement(modificarSolicitud);
+			nuevoU.setString(1, estado);
+			nuevoU.setInt(2, idSolicitud);
+			
+			
+			nuevoU.executeUpdate();
+			
+			result = true;
+		} catch(SQLException se) {
+			se.printStackTrace();  
+		
+		} catch(Exception e) {
+			e.printStackTrace(System.err); 
+		} finally {
+			db.ConnectionManager.releaseConnection(conn); 
+		}
+		return result;
+	}
+	
+	
 	public List<SolicitudVO> historialUsuario(UsuarioVO user, int paginaActual, int solicitudesPorPagina) throws SQLException {
 		ResultSet result = null;
 		Connection conn = null;
@@ -117,18 +148,30 @@ public class SolicitudFacade {
 		return l;
 	}
 	
-	public ResultSet historialEstado(String estado) throws SQLException {
+	public List<SolicitudVO> historialEstado(String estado, int paginaActual, int solicitudesPorPagina) throws SQLException {
 		ResultSet result = null;
 		Connection conn = null;
+		List<SolicitudVO> l = null;
 		
 		try {
 			conn = ConnectionManager.getConnection();
-			
-			
-			PreparedStatement solicitudesE = conn.prepareStatement(selectByEstado);
-			solicitudesE.setString(1, estado);
-			
-			result = solicitudesE.executeQuery();
+			int offset = (paginaActual - 1) * solicitudesPorPagina;
+			PreparedStatement solicitudesN = conn.prepareStatement(selectByEstado);
+			solicitudesN.setString(1, estado);
+			solicitudesN.setInt(2, solicitudesPorPagina);
+			solicitudesN.setInt(3, offset);
+			System.out.println("offset ->"+ offset);
+
+			result = solicitudesN.executeQuery();
+			l = new ArrayList();
+			while (result.next()) {
+				SolicitudVO solicitud= new SolicitudVO(result.getString("direccion"), result.getString("fecha"), 
+						result.getString("hora"),result.getString("mensaje"),
+						result.getString("estado"), result.getString("servicio"), result.getString("usuario"));
+				solicitud.setId(result.getInt("idsolicitud"));
+				l.add(solicitud);
+				System.out.println("ID SOLICITUD->"+ result.getInt("idsolicitud"));
+			}
 			
 		} catch(SQLException se) {
 			se.printStackTrace();  
@@ -138,7 +181,7 @@ public class SolicitudFacade {
 		} finally {
 			db.ConnectionManager.releaseConnection(conn); 
 		}
-		return result;
+		return l;
 	}
 	
 	public int numSolicitudesUsuario(UsuarioVO usuario) {
@@ -157,5 +200,22 @@ public class SolicitudFacade {
 		}
 		return resultado;
 	}
+	
+	public int numSolicitudesEstado(String estado) {
+		int resultado = 0;
+		Connection conn = null;	
+		try {
+			conn = ConnectionManager.getConnection();
+			PreparedStatement solicitudesU = conn.prepareStatement(countByEstado);
+			solicitudesU.setString(1, estado);
+			ResultSet countRs = solicitudesU.executeQuery();
+			countRs.next();
+			resultado = countRs.getInt(1);
+		} catch(SQLException se) {
+			se.printStackTrace();  	
+		}
+		return resultado;
+	}
+	
 }
 

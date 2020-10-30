@@ -15,6 +15,8 @@
 		<![endif]-->
 </head>
 <body>
+<%@ page import="java.util.List" %>
+<%@ page import="model.SolicitudVO" %>
 <div class="page">
     <header class="page-head">
     <div class="rd-navbar-wrap">
@@ -107,9 +109,9 @@
         </div>
       </div>
     </section>
-    <section class="section-40 section-lg-64 bg-gray">
+     <section class="section-40 section-lg-64 bg-gray">
       <div class="shell">
-        <div class="range range-sm-center">
+            <div class="range range-sm-center">
           <div class="cell-sm-9 cell-md-12 bg-gray">
             <div class="col-sm-12">
              <div class="col-sm-10">
@@ -122,10 +124,11 @@
                  <!-- Select State items start -->
                  <div class="select-categories">
                    <select name="select1" onchange="location = this.value">
-                     <option value="historialA.html">Aceptadas</option>
-                     <option value="historialD.html">Denegadas</option>
-                     <option value="historialF.html">Finalizadas</option>
-                     <option value="historialP.html" selected="selected">Pendientes</option>
+                     <option value="listar_historial_admin?estado=aceptada"  <% if (request.getAttribute("estado").equals("aceptada")) { out.print("selected='selected'");}%>>Aceptadas</option>
+                     <option value="listar_historial_admin?estado=denegada"  <% if (request.getAttribute("estado").equals("denegada")) { out.print("selected='selected'");}%>>Denegadas</option>
+                     <option value="listar_historial_admin?estado=finalizada"  <% if (request.getAttribute("estado").equals("finalizada")) { out.print("selected='selected'");}%>>Finalizadas</option>
+                     <option value="listar_historial_admin?estado=pendiente"  <% if (request.getAttribute("estado").equals("pendiente")) { out.print("selected='selected'");}%>>Pendientes</option>
+                  
                    </select>
                  </div>
                </div>
@@ -133,101 +136,107 @@
           </div>
           </div>
         </div>
-        <div class="range range-sm-center range-md-left offset-top-30">
-          <div class="cell-sm-9 cell-md-12 bg-gray-lighter">
-            <div class="p-3 row-md-8">
-              <h4>Solicitud nº 42</h4>
-              <p style="color:black";>Lugar: Avenida Duquesa Villahermosa nº 42, planta calle.</p>
-              <p style="color:black";>Fecha: 01/01/2021</p>
-              <p style="color:black";>Hora: 7 PM</p>
-              <p style="color:black";>Comentario: La oficina consta de varios muebles de madera y una moqueta.</p>
-            </div>
-            <br>
-            <div class="p-3 row-md-2">
+   
+					<%
+						int solicitudesPorPagina = (int) request.getAttribute("solicitudesPorPagina");
+					List<SolicitudVO> lista = (List<SolicitudVO>) request.getAttribute("lista_solicitudes");
+					if (lista != null) {
+						if (lista.size() == 0) {
+					%>
+						<h3> No existe ninguna solicitud</h3>
+					<%  }
+						else {
+							for (SolicitudVO solicitud : lista) {
+					%>
+					<div class="range range-sm-center range-md-left offset-top-30">
+						<div class="cell-sm-9 cell-md-12 bg-gray-lighter">
+							<div class="p-3 row-md-2">
+								<div class="row offtop-sm-12 bg-gray-lighter">
+									<br>
+									<div class="col-sm-10">
+										<h4>
+											<%
+												out.print(solicitud.getDireccion());
+											%>
+										</h4>
+									</div>
+									<div class="col-sm-2">
+										<p>
+											Estado:
+											<%out.print(solicitud.getEstado());%>
+										</p>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="row-sm-12">
+								<p style="color: black";>
+									Fecha:
+									<%out.print(solicitud.getFecha());%>
+								</p>
+								<p style="color: black";>
+									Hora:
+									<%out.print(solicitud.getHora());%>
+								</p>
+								<p style="color: black";>
+									Comentario:
+									<%out.print(solicitud.getMensaje());%>
+								</p>
+								<br>
+							</div>
+						</div>
+					</div>
+					
+							<% if (request.getAttribute("estado").equals("pendiente")) { %>
+						<div class="p-3 row-md-2">
               <div class="row offtop-sm-12 bg-gray-lighter">
                 <div class="col-sm-6">
-                  <button type="button" class="btn btn-round btn-success btn-lg btn-block">Aceptar</button>
+                <a href="/web/update_estado?estado=pendiente&accion=aceptar&idSolicitud=<%out.print(solicitud.getId());%>">
+                  <button type="button" class="btn btn-round btn-success btn-lg btn-block" >Aceptar</button>
+                </a>
                 </div>
                 <div class="col-sm-6">
+                  <a href="/web/update_estado?estado=pendiente&accion=denegar&idSolicitud=<%out.print(solicitud.getId());%>">
                   <button type="button" class="btn btn-round btn-danger btn-lg btn-block">Denegar</button>
+                  </a>
                 </div> 
               </div>
             </div>
-            <br>
-          </div>
-        </div>
-        <div class="range range-sm-center range-md-left offset-top-30">
-          <div class="cell-sm-9 cell-md-12 bg-gray-lighter">
-            <div class="p-3 row-md-8">
-              <h4>Solicitud nº 42</h4>
-              <p style="color:black";>Lugar: Avenida Duquesa Villahermosa nº 42, planta calle.</p>
-              <p style="color:black";>Fecha: 01/01/2021</p>
-              <p style="color:black";>Hora: 7 PM</p>
-              <p style="color:black";>Comentario: La oficina consta de varios muebles de madera y una moqueta.</p>
-            </div>
-            <br>
-            <div class="p-3 row-md-2">
-              <div class="row offtop-sm-12 bg-gray-lighter">
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-round btn-success btn-lg btn-block">Aceptar</button>
-                </div>
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-round btn-danger btn-lg btn-block">Denegar</button>
-                </div> 
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
-        <div class="range range-sm-center range-md-left offset-top-30">
-          <div class="cell-sm-9 cell-md-12 bg-gray-lighter">
-            <div class="p-3 row-md-8">
-              <h4>Solicitud nº 42</h4>
-              <p style="color:black";>Lugar: Avenida Duquesa Villahermosa nº 42, planta calle.</p>
-              <p style="color:black";>Fecha: 01/01/2021</p>
-              <p style="color:black";>Hora: 7 PM</p>
-              <p style="color:black";>Comentario: La oficina consta de varios muebles de madera y una moqueta.</p>
-            </div>
-            <br>
-            <div class="p-3 row-md-2">
-              <div class="row offtop-sm-12 bg-gray-lighter">
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-round btn-success btn-lg btn-block">Aceptar</button>
-                </div>
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-round btn-danger btn-lg btn-block">Denegar</button>
-                </div> 
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
-        <div class="offset-top-35 offset-sm-top-60">
-          	<ul class="pagination-custom">
-          	  <li class="disabled">
-          	    <a href="#">
-          	      <span class="sr-only">Prev</span>
-          	    </a>
-          	  </li>
-          	  <li class="active">
-          	    <a href="#">1</a>
-          	  </li>
-          	  <li>
-          	    <a href="#">2</a>
-          	  </li>
-          	  <li>
-          	    <a href="#">3</a>
-          	  </li>
-          	  <li>
-          	    <a href="#">4</a>
-          	  </li>
-          	  <li>
-          	    <a href="#">
-          	      <span class="sr-only">Next</span>
-          	    </a>
-          	  </li>
-          	</ul>
-          </div>
+            				<%
+							} else if (request.getAttribute("estado").equals("aceptada")) {
+							%>
+							
+							<div class="row-md-2">
+              					<div class="row offtop-sm-12 bg-gray-lighter">
+                  				<a href="/web/update_estado?estado=aceptada&accion=finalizar&idSolicitud=<%out.print(solicitud.getId());%>">
+                  					<button type="button" class="btn btn-round btn-success btn-lg btn-block">Finalizar</button>
+                  				</a>
+              					</div>
+            				</div>
+							<%
+							}
+							}
+						}
+					}
+							%>
+      
+		<div class="offset-top-35 offset-sm-top-60">
+          	<ul class="pagination">
+			<% int numPaginas = (int)request.getAttribute("numPaginas");
+			   int paginaActual = (int)request.getAttribute("paginaActual");
+   			   for (int i = 1; i <= numPaginas; i++) {
+   				   if (i == paginaActual) {
+   			 %>
+					 <li class="active">
+          	  	<% } else { %>
+          	  	 	<li>
+          	  	<% } %>
+          	  	       <a href=<% out.print("listar_historial_usuario?paginaPinchada=" + i);%>>
+          	  	       		<% out.print(i);
+          	  	       		%></a>
+          	  		</li>
+			<% } %>
+		</div>
       </div>
     </section>
 </main>

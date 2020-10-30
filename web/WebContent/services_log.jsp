@@ -55,7 +55,7 @@
                     </div>
                     <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
                     <div class="box-content"><a href="appointment.jsp" class="btn btn-primary">SOLICITAR</a>
-                      <h4>300 € </h4>
+                      <h4>300 &euro;</h4>
                     </div>
                   </div>
                   <p>Ice makers are kitchen appliances that are commonly found in two formats; those that are found attached to a refrigerator unit and those that stand alone and function solely to produce and store ice. The function of an ice maker is pretty straightforward; it mainly turns water into ice. Its secondary function is to store the ice in cubes or in blocks until they are ready to be used. Majority of US households prefer refrigerator units that feature ice makers. Models that are not equipped with one are eventually upgraded by adding a smaller unit and are then integrated for efficiency and optimum functionality.</p>
@@ -66,8 +66,8 @@
                       <h3>Baldosa</h3>
                     </div>
                     <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
-                    <div class="box-content"><a href="appointment.html"  class="btn btn-primary">SOLICITAR</a>
-                      <h4>200 € </h4>
+                    <div class="box-content"><a href="appointment.jsp"  class="btn btn-primary">SOLICITAR</a>
+                      <h4>200 &euro;</h4>
                     </div>
                   </div>
                   <p>Times are tough in todays economy and most families have to cut back on expenses. Nearly every family is abiding by a strict budget and everyone is tightening their belts to make ends meet. San Diego is one area of the country that has been hit the hardest. Restaurants are one of the first things that people cut from their budget. Getting your cooking equipment in tip top shape has never been more important since families are spending more time cooking at home. Most kitchen appliances need regular maintenance to ensure they work for a lifetime.</p>
@@ -78,8 +78,8 @@
                       <h3>Parque</h3>
                     </div>
                     <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
-                    <div class="box-content"><a href="appointment.html"  class="btn btn-primary">SOLICITAR</a>
-                        <h4>100 € </h4>
+                    <div class="box-content"><a href="appointment.jsp"  class="btn btn-primary">SOLICITAR</a>
+                        <h4>100 &euro; </h4>
                     </div>
                   </div>
                   <p>Are you currently scouring the Internet for quality appliance parts?</p>

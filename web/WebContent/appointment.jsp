@@ -27,7 +27,7 @@
             </div>
             <div class="offset-top-22 offset-sm-top-0 text-sm-right">
               <ul class="breadcrumbs-custom">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="services_log.jsp">Home</a></li>
                 <li class="active">Make an Appointment</li>
               </ul>
             </div>
