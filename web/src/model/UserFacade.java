@@ -49,7 +49,7 @@ public class UserFacade {
 		return result;
 	}
 	
-	public boolean modificarPerfil(Perfil_usuario perf) throws SQLException {
+	public boolean modificarPerfil(Perfil_usuarioVO perf) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
 	

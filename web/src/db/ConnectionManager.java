@@ -10,8 +10,10 @@ public class ConnectionManager {
 	private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres?currentSchema=web";
 	
 	// Credenciales de la Base de Datos
-	private static final String USER = "postgres";
-	private static final String PASS = "sisinf2020";
+	//private static final String USER = "postgres";
+	//private static final String PASS = "sisinf2020";
+	private static final String USER = "alonso";
+	private static final String PASS = "alonso";
 	
 	// Devuelve una nueva conexion.
 	public final static Connection getConnection() throws SQLException {

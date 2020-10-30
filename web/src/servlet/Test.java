@@ -1,6 +1,6 @@
 package servlet;
 
-import model.Perfil_usuario;
+import model.Perfil_usuarioVO;
 import model.ServiciosVO;
 import model.SolicitudVO;
 import model.UserFacade;

@@ -1,6 +1,6 @@
 package model;
 
-public class Perfil_usuario {
+public class Perfil_usuarioVO {
 	static Integer idUser = 1; 
 	String nickName;
 	String direccion;
@@ -10,7 +10,7 @@ public class Perfil_usuario {
 	String apellidos;
 	Integer Id;
 	
-	public Perfil_usuario(String nickName, String direccion, String email,
+	public Perfil_usuarioVO(String nickName, String direccion, String email,
 			String telefono, String nombre, String apellidos) {
 		this.nickName = nickName;
 		this.direccion = direccion;
