@@ -40,12 +40,12 @@ public class Test extends HttpServlet {
 		SolicitudFacade facade = new SolicitudFacade();
 		UsuarioVO user, usuario1, usuario2;
 		try {
-			ServiciosVO ser = new ServiciosVO("M", "asd", 42);
+			ServiciosVO ser = new ServiciosVO("Mo", "asd", 42);
 			System.out.println("Crear Serv "+facade.addServicio(ser)+"\n");
 			
 			java.sql.Date f = new java.sql.Date(5000000);
 			java.sql.Time h = new java.sql.Time(5000);
-			SolicitudVO sol = new SolicitudVO("as", f, h, "asd", "asd", "M", "A");
+			SolicitudVO sol = new SolicitudVO("ass", f, h, "asd", "asd", "Mo", "A");
 			System.out.println("Crear Sol "+facade.addSolicitud(sol)+"\n");
 			//Perfil_usuario perf1 = new Perfil_usuario("Al", "asd", "adsfgh", "12345", "asd", "asd");
 			

@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,18 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.UserFacade;
 import model.UsuarioVO;
+import model.Perfil_usuarioVO;
 
 /**
  * Servlet implementation class Signin
  */
-@WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/signin" })
-public class Signin extends HttpServlet {
+@WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/register" })
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Signin() {
+    public Register() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,19 +41,24 @@ public class Signin extends HttpServlet {
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		} else {
 			System.out.print("\nsino!\n");
-			UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"), false);
-			boolean valido = dao.validateUser(user);
-			if (valido) {
-				Perfil_usuarioVO n
+			boolean existe = dao.existUser(request.getParameter("nickname"));
+			if (!existe) {
+				//
+				System.out.print("\n NO EXISTE\n");
+				UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"));
+				Perfil_usuarioVO nuevo = new Perfil_usuarioVO(request.getParameter("nickname"), request.getParameter("direccion"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("nombre"), request.getParameter("apellidos"));		
+				
+				dao.addUser(user);
+				dao.modificarPerfil(nuevo);
 				user.setPwd(null);
 				request.getSession().setAttribute("user",user);
-				request.getRequestDispatcher("logged.jsp").forward(request, response);
+				request.getRequestDispatcher("register.jsp").forward(request, response);
 			} else {
-				request.setAttribute("error", "invalid password");
-				request.getRequestDispatcher("signin.jsp").forward(request, response);
+				request.setAttribute("error", "usuario existente");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
 			}
 		}
-		}catch(Exception e) {
+		}catch(SQLException e) {
 			System.out.print("\nSQL murió!\n");
 		}
 	}

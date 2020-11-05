@@ -176,5 +176,25 @@ public class UserFacade {
 		return user;
 	}
 	
+	public Boolean existUser(String username) throws SQLException {
+		Connection conn = null;
+		Boolean existe = false;
+
+		try {
+			// Abrimos la conexión e inicializamos los parámetros 
+			conn = ConnectionManager.getConnection(); 
+			PreparedStatement ps = conn.prepareStatement("Select * from usuario where nickname= ?");
+			ps.setString(1, username);
+			ResultSet rset = ps.executeQuery();
+			existe = rset.next();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.ConnectionManager.releaseConnection(conn);
+		}
+		return existe;
+	}
+	
 }
 

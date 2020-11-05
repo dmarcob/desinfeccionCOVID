@@ -48,8 +48,12 @@ public class UsuarioVO {
 		return pwd;
 	}
 	public void setPwd(String pwd) {
-		this.pwd = hash(pwd);
-		System.out.println(this.pwd);
+		if (pwd != null){
+			this.pwd = hash(pwd);
+			//System.out.println(this.pwd);
+		}else {
+			this.pwd = null;
+		}
 	}
 	public boolean isAdmin() {
 		return admin;
