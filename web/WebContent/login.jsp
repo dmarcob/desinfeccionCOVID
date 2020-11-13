@@ -105,6 +105,11 @@
               <ul class="resp-tabs-list text-center">
                 <li>Login</li>
               </ul>
+              <% if (request.getAttribute("error") != null) { %> 
+				<div class="alert alert-danger" >
+				<%= request.getAttribute("error") %>
+				</div>
+				<% } %>
               <div class="resp-tabs-container offset-top-40">
                 <div class="animated fadeIn">
                   <form class="rd-mailform text-left" id=login_usuario method="get" action="signin">

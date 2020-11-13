@@ -125,7 +125,7 @@ public class UserFacade {
 				// Comparamos contraseñas
 				findRs.next();
 				String dbpwd = findRs.getString("pwd");
-				//dbpwd = hash(dbpwd);
+				//dbpwd = user.hash(dbpwd);
 				//System.out.print("db: " + dbpwd);
 				//System.out.print("us: " + user.getPwd());
 				if (dbpwd.contentEquals(user.getPwd())) {
