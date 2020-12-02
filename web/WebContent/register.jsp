@@ -151,10 +151,8 @@
 			 <!--  <a href="login.html" class="btn btn-info" type="submit" role="button">Registrar</a> -->
 			  			<button type="submit" class="btn btn-primary">Registrar</button>
                       </div>
-                      <div class="group group-middle offset-top-30 text-center text-xs-left">
-
+                      <div class="group group-middle offset-top-30 text-center">
                         <p> ¿Ya tienes cuenta? <a href="login.jsp">Inicia sesion aqui­</a></p>
-
                       </div>
                     </form>
                   </div>

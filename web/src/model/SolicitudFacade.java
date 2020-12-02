@@ -18,6 +18,8 @@ public class SolicitudFacade {
 	private static String selectByEstado = "SELECT * FROM web.solicitud WHERE estado=? ORDER BY idsolicitud ASC LIMIT ? OFFSET ?";
 	private static String countByUsuario = "SELECT count(*) cuenta FROM web.solicitud WHERE usuario = ?";
 	private static String countByEstado = "SELECT count(*) cuenta FROM web.solicitud WHERE estado = ?";
+	private static String selectEmail = "SELECT email FROM web.perfil_usuario WHERE nickname = (SELECT usuario from web.solicitud where idsolicitud = ?)";
+
 
 
 	//private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
@@ -215,6 +217,23 @@ public class SolicitudFacade {
 			se.printStackTrace();  	
 		}
 		return resultado;
+	}
+	
+	public String emailSolicitud(int id) {
+		String email = null;
+		Connection conn = null;	
+		try {
+			conn = ConnectionManager.getConnection();
+			PreparedStatement solicitudesU = conn.prepareStatement(selectEmail);
+			solicitudesU.setInt(1, id);
+			ResultSet countRs = solicitudesU.executeQuery();
+			countRs.next();
+			email = countRs.getString(1);
+		} catch(SQLException se) {
+			se.printStackTrace();  	
+		}
+		return email;
+		
 	}
 	
 }

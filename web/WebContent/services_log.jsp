@@ -27,7 +27,7 @@
             </div>
             <div class="offset-top-22 offset-sm-top-0 text-sm-right">
               <ul class="breadcrumbs-custom">
-                <li><a href="index_log.html">Home</a></li>
+                <li><a href="services_log.jsp">Home</a></li>
                 <li class="active">Servicios</li>
 
               </ul>
@@ -53,7 +53,6 @@
                     <div class="box-header">
                       <h3>Moqueta</h3>
                     </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
                     <div class="box-content"><a href="appointment.jsp" class="btn btn-primary">SOLICITAR</a>
                       <h4>300 &euro;</h4>
                     </div>
@@ -65,7 +64,6 @@
                     <div class="box-header">
                       <h3>Baldosa</h3>
                     </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
                     <div class="box-content"><a href="appointment.jsp"  class="btn btn-primary">SOLICITAR</a>
                       <h4>200 &euro;</h4>
                     </div>
@@ -77,7 +75,6 @@
                     <div class="box-header">
                       <h3>Parque</h3>
                     </div>
-                    <div class="box-image"><img src="images/146x156.png" alt="" width="146" height="156"/> </div>
                     <div class="box-content"><a href="appointment.jsp"  class="btn btn-primary">SOLICITAR</a>
                         <h4>100 &euro; </h4>
                     </div>

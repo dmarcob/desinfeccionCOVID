@@ -10228,6 +10228,13 @@ mark, .mark {
   color: #ffffff;
 }
 
+.text-style-66 {
+  font-weight: 400;
+  font-style: italic;
+  color: white;
+  text-shadow: 10px 10px 5px #000000
+}
+
 .paragraph-style-1 * {
   margin-right: .25em;
 }
