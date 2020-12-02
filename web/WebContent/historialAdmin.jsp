@@ -191,12 +191,12 @@
 						<div class="p-3 row-md-2">
               <div class="row offtop-sm-12 bg-gray-lighter">
                 <div class="col-sm-6">
-                <a href="/web/update_estado?estado=pendiente&accion=aceptar&idSolicitud=<%out.print(solicitud.getId());%>">
+                <a href="/web/update_estado?estado=pendiente&accion=aceptar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
                   <button type="button" class="btn btn-round btn-success btn-lg btn-block" >Aceptar</button>
                 </a>
                 </div>
                 <div class="col-sm-6">
-                  <a href="/web/update_estado?estado=pendiente&accion=denegar&idSolicitud=<%out.print(solicitud.getId());%>">
+                  <a href="/web/update_estado?estado=pendiente&accion=denegar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
                   <button type="button" class="btn btn-round btn-danger btn-lg btn-block">Denegar</button>
                   </a>
                 </div> 

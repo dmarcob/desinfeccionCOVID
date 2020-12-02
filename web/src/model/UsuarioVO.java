@@ -8,6 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.math.BigInteger; 
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException; 
 
 import db.PoolConnectionManager;
 
@@ -62,12 +65,33 @@ public class UsuarioVO {
 		this.admin = admin;
 	}
 	
+
+	  
+
+	public String hash(String input) { 
+	    try { 
+	            MessageDigest md = MessageDigest.getInstance("MD5"); 
+	            byte[] messageDigest = md.digest(input.getBytes()); 
+	            BigInteger no = new BigInteger(1, messageDigest); 
+	            String hashtext = no.toString(16); 
+	            while (hashtext.length() < 32) { 
+	                hashtext = "0" + hashtext; 
+	            } 
+	            return hashtext; 
+	        }  
+	        catch (NoSuchAlgorithmException e) { 
+	            throw new RuntimeException(e); 
+	        } 
+	    } 
+	
+	
+	/*
 	public String hash(String pwd) {
 		Integer hash = 7;
 		for(int i = 0; i < pwd.length(); i++) {
 			hash = hash*31 + pwd.charAt(i);
 		}
 		return hash.toString();
-	}
+	}*/
 	
 }

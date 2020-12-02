@@ -17,6 +17,7 @@ import model.SolicitudVO;
 import model.SolicitudFacade;
 import model.UserFacade;
 import model.UsuarioVO;
+import utils.SendEmail;
 
 /**
  * Servlet implementation class Logged
@@ -46,15 +47,20 @@ public class update_estado extends HttpServlet {
 				UsuarioVO user = (UsuarioVO) request.getSession().getAttribute("user");
 				String estado = request.getParameter("estado");
 				String accion = request.getParameter("accion");
+				String direccion = request.getParameter("direccion");
 				int idSolicitud = Integer.parseInt(request.getParameter("idSolicitud"));
+				String destinatario = dao.emailSolicitud(idSolicitud);
+				SendEmail email = new SendEmail();
 				if (accion.equals("aceptar")) {
 					System.out.println("ACEPTADAAAA!!!!!");
 					dao.modificarSolicitud("aceptada", idSolicitud);
-					String destinatario = dao.emailSolicitud(idSolicitud);
-					enviarEmail(destinatario);
+					email.sendEmail(destinatario,"[Desinfecciones Megalo] Petición de desinfección."
+							,"Su petición de desinfección a la dirección: " +  direccion + " ha sido aceptada.");
 					
 				} else if (accion.equals("denegar")) {
 					dao.modificarSolicitud("denegada", idSolicitud);
+					email.sendEmail(destinatario,"[Desinfecciones Megalo] Petición de desinfección."
+							,"Su petición de desinfección a la dirección: " +  direccion + " ha sido denegada.");
 				} else {
 					//caso finalizar
 					dao.modificarSolicitud("finalizada", idSolicitud);
@@ -79,9 +85,4 @@ public class update_estado extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	protected void enviarEmail (String destinatario) {
-		//TODO: Implementar este método como mejora :)
-	}
-
 }
