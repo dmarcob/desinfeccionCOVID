@@ -1,5 +1,11 @@
 package model;
-
+/**
+ * 
+ * @author megalobox team
+ * Esta clase implementa el patrón DAO utilizado para las operaciones 
+ * de inserción y búsqueda de solicitudes y servicios en la base de datos.
+ *
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,14 +28,12 @@ public class SolicitudFacade {
 
 
 
-	//private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
-	
-	/** * Busca un registro en la tabla DEMO por ID * 
-		@param id Identificador del registro buscado * 
-	 * @throws SQLException 
-		@returnObjeto DemoVO con el identificador buscado, o null si no seencuentra 
-	*/
-	
+	/**
+	 * Inserta un servicio no existente en la base de datos.
+	 * @param service
+	 * @return true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean addServicio(ServiciosVO service) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
@@ -57,6 +61,13 @@ public class SolicitudFacade {
 		return result;
 	}
 	
+	/**
+	 * Añade una solicitud nueva de servicio realizada por un usuario
+	 * registrado.
+	 * @param solicitude
+	 * @return true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean addSolicitud(SolicitudVO solicitude) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
@@ -88,6 +99,15 @@ public class SolicitudFacade {
 		return result;
 	}
 	
+	
+	/**
+	 * Modifica el estado de una solicitud existente en la base de datos
+	 * por petición del administrador.
+	 * @param estado
+	 * @param idSolicitud
+	 * @return true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean modificarSolicitud(String estado, int idSolicitud) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
@@ -115,7 +135,15 @@ public class SolicitudFacade {
 		return result;
 	}
 	
-	
+	/**
+	 *
+	 * @param user
+	 * @param paginaActual
+	 * @param solicitudesPorPagina
+	 * @return Devuelve la lista de solicitudes realizadas por el usuario "user" correspondientes a la página
+	 * "páginaActual", de tamaño "solicitudesPorPagina".
+	 * @throws SQLException
+	 */
 	public List<SolicitudVO> historialUsuario(UsuarioVO user, int paginaActual, int solicitudesPorPagina) throws SQLException {
 		ResultSet result = null;
 		Connection conn = null;
@@ -128,7 +156,6 @@ public class SolicitudFacade {
 			solicitudesN.setString(1, user.getnickname());
 			solicitudesN.setInt(2, solicitudesPorPagina);
 			solicitudesN.setInt(3, offset);
-			System.out.println("offset ->"+ offset);
 
 			result = solicitudesN.executeQuery();
 			l = new ArrayList();
@@ -136,7 +163,6 @@ public class SolicitudFacade {
 				l.add(new SolicitudVO(result.getString("direccion"), result.getString("fecha"), 
 								result.getString("hora"),result.getString("mensaje"),
 								result.getString("estado"), result.getString("servicio"), result.getString("usuario")));
-				System.out.println(result.getString("direccion"));
 			}
 			
 		} catch(SQLException se) {
@@ -150,6 +176,15 @@ public class SolicitudFacade {
 		return l;
 	}
 	
+	/**
+	 * 
+	 * @param estado
+	 * @param paginaActual
+	 * @param solicitudesPorPagina
+	 * @return Devuelve una lista de solicitudes cuyo estado corresponde a "estado", en la página "paginaActual",
+	 * de tamaño "solicitudesPorPagina".
+	 * @throws SQLException
+	 */
 	public List<SolicitudVO> historialEstado(String estado, int paginaActual, int solicitudesPorPagina) throws SQLException {
 		ResultSet result = null;
 		Connection conn = null;
@@ -162,7 +197,6 @@ public class SolicitudFacade {
 			solicitudesN.setString(1, estado);
 			solicitudesN.setInt(2, solicitudesPorPagina);
 			solicitudesN.setInt(3, offset);
-			System.out.println("offset ->"+ offset);
 
 			result = solicitudesN.executeQuery();
 			l = new ArrayList();
@@ -172,7 +206,6 @@ public class SolicitudFacade {
 						result.getString("estado"), result.getString("servicio"), result.getString("usuario"));
 				solicitud.setId(result.getInt("idsolicitud"));
 				l.add(solicitud);
-				System.out.println("ID SOLICITUD->"+ result.getInt("idsolicitud"));
 			}
 			
 		} catch(SQLException se) {
@@ -186,6 +219,12 @@ public class SolicitudFacade {
 		return l;
 	}
 	
+	
+	/**
+	 * 
+	 * @param usuario
+	 * @return Número solicitudes realizadas por el usuario "usuario"
+	 */
 	public int numSolicitudesUsuario(UsuarioVO usuario) {
 		int resultado = 0;
 		Connection conn = null;	
@@ -196,7 +235,6 @@ public class SolicitudFacade {
 			ResultSet countRs = solicitudesU.executeQuery();
 			countRs.next();
 			resultado = countRs.getInt(1);
-			System.out.println("Número de solicitudes usuario: " + resultado);
 		} catch(SQLException se) {
 			se.printStackTrace();  	
 		}
@@ -219,6 +257,11 @@ public class SolicitudFacade {
 		return resultado;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return Una cadena  correspondiente al email del usuario que ha enviado una solicitud de id "id"
+	 */
 	public String emailSolicitud(int id) {
 		String email = null;
 		Connection conn = null;	

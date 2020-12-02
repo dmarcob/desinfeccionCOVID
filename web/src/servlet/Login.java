@@ -12,7 +12,10 @@ import model.UserFacade;
 import model.UsuarioVO;
 
 /**
- * Servlet implementation class Signin
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando un usuario quiere logearse en su cuenta.
+ *
  */
 @WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/signin" })
 public class Login extends HttpServlet {
@@ -26,17 +29,15 @@ public class Login extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Este servlet se invoca cuando el usuario quiere iniciar sesión.
+     * Si el usuario no existe se le redirige a "login.jsp" indicandole el error,
+     * Si el usuario existe, dependiendo de si es administrador o no, se invoca
+     * el servlet "listar_historial_admin" o se le redirige a "services_log.jsp" respectivamente.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		UserFacade dao = new UserFacade();		
-		
-		if (false){//TODO hacer cosas guays de errores
-			request.setAttribute("error", "email pocho");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
 			UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"), false);
 			int valido = dao.validateUser(user);
 			if (valido > 0) {
@@ -58,7 +59,6 @@ public class Login extends HttpServlet {
 				request.setAttribute("error", "Contraseña invalida o usuario no existente");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
-		}
 		}catch(Exception e) {
 			System.out.print("\nSQL murió!\n");
 		}

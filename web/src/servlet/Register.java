@@ -14,7 +14,10 @@ import model.UsuarioVO;
 import model.Perfil_usuarioVO;
 
 /**
- * Servlet implementation class Signin
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el usuario quiere registrarse.
+ *
  */
 @WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/register" })
 public class Register extends HttpServlet {
@@ -26,25 +29,25 @@ public class Register extends HttpServlet {
     public Register() {
         super();
         // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    }	
+    
+    /**
+     * Este servlet se invoca cuando el usuario quiere registrarse
+     * Si el usuario existe se le redirige a "register.jsp" indicandole el error,
+     * Si el usuario no existe, se procede a crear un nuevo usuario normal y perfil con los datos
+     * proporcionados.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		UserFacade dao = new UserFacade();		
 		
 		if (request.getParameter("email") == null){//TODO hacer cosas guays de errores
-			System.out.print("\nsi!\n");
 			request.setAttribute("error", "email pocho");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		} else {
-			System.out.print("\nsino!\n");
 			boolean existe = dao.existUser(request.getParameter("nickname"));
 			if (!existe) {
 				//
-				System.out.print("\n NO EXISTE\n");
 				UsuarioVO user = new UsuarioVO(request.getParameter("nickname"), request.getParameter("password"));
 				Perfil_usuarioVO perfil = new Perfil_usuarioVO(request.getParameter("nickname"), request.getParameter("direccion"), request.getParameter("email"), request.getParameter("telefono"), request.getParameter("nombre"), request.getParameter("apellidos"));		
 				

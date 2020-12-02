@@ -1,4 +1,4 @@
--- DROP SCHEMA web;
+-- DROP SCHEMA web cascade;
 
 CREATE SCHEMA web AUTHORIZATION postgres;
 

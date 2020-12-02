@@ -1,5 +1,10 @@
 package model;
-
+/**
+ * 
+ * @author megalobox team
+ * Esta clase implementa el patrón VO de la entidad perfil_usuario.
+ *
+ */
 public class Perfil_usuarioVO {
 	String nickName;
 	String direccion;

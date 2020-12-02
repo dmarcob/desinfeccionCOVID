@@ -17,7 +17,10 @@ import model.UserFacade;
 import model.UsuarioVO;
 
 /**
- * Servlet implementation class Logged
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el usuario entra en su historial de peticiones.
+ *
  */
 @WebServlet("/listar_historial_usuario")
 public class Listar_historial_usuario extends HttpServlet {
@@ -31,8 +34,11 @@ public class Listar_historial_usuario extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+	 * Si el usuario no está logeado es redirigido a "login.jsp"
+	 * Si el usuario está logeado por muestra las solicitudes que ha realizado ordenadas 
+	 * de más recientes a menos recientes.
+	 * Se ha implementado una paginación de las solicitudes para mostrarlas de tres en tres.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -66,7 +72,6 @@ public class Listar_historial_usuario extends HttpServlet {
 				request.removeAttribute("lista_solicitudes");
 				request.setAttribute("lista_solicitudes", l);
 
-				System.out.println("paginaActualllll ->" + request.getParameter("paginaPinchada"));
 				request.getRequestDispatcher("historialU.jsp").forward(request, response);
 
 			}

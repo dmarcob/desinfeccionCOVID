@@ -8,7 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.ConnectionManager;
-
+/**
+ * 
+ * @author megalobox team
+ * Esta clase implementa el patrón DAO utilizado para las operaciones 
+ * de inserción y modificación y búsqueda de usuarios y perfiles de usuario.
+ *
+ */
 public class UserFacade {
 	
 	private static String tablaUsuario = "INSERT INTO web.usuario(nickname, pwd, admin) VALUES(?, ?, ?)";
@@ -17,14 +23,13 @@ public class UserFacade {
 	private static String countByUserName = "SELECT count(*) cuenta FROM usuario WHERE nickname = ?";
 	private static String countByPerfil = "SELECT count(*) cuenta FROM web.perfil_usuario WHERE nickname = ?";
 	private static String findByUserName = "SELECT * FROM usuario WHERE nickname = ?";
-	//private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
 	
-	/** * Busca un registro en la tabla DEMO por ID * 
-		@param id Identificador del registro buscado * 
-	 * @throws SQLException 
-		@returnObjeto DemoVO con el identificador buscado, o null si no seencuentra 
-	*/
-	
+	/**
+	 * Añade un usuario no administrador a la base de datos
+	 * @param user
+	 * @return  true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean addUser(UsuarioVO user) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
@@ -51,16 +56,19 @@ public class UserFacade {
 		return result;
 	}
 	
+	/**
+	 * Actualiza el perfil de un usuario existente
+	 * @param perfil
+	 * @return true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean updatePerfil(Perfil_usuarioVO perfil) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionManager.getConnection();
-			
-			System.out.println("ANTES DE UPDATEAR PERFIL");
-			System.out.println(perfil.getNombre());
-
+		
 			PreparedStatement nuevoU = conn.prepareStatement(modificarTablaPerfil);
 
 			nuevoU.setString(1, perfil.getDireccion());
@@ -69,10 +77,6 @@ public class UserFacade {
 			nuevoU.setString(4, perfil.getNombre());
 			nuevoU.setString(5, perfil.getApellidos());
 			nuevoU.setString(6, perfil.getNickName());
-
-
-
-			System.out.println("DESPUES DE UPDATEAR PERFIL");
 
 			nuevoU.executeUpdate();
 			
@@ -87,6 +91,13 @@ public class UserFacade {
 		return result;
 	}
 	
+	
+	/**
+	 * Si no exite el perfil del usuario lo crea, en caso contrario lo actualiza
+	 * @param perf
+	 * @return true = operación realizada con éxito | false = operación no se ha podido realizar
+	 * @throws SQLException
+	 */
 	public boolean modificarPerfil(Perfil_usuarioVO perf) throws SQLException {
 		boolean result = false;
 		Connection conn = null;
@@ -101,7 +112,6 @@ public class UserFacade {
 		int n = countRs.getInt(1);
 		PreparedStatement nuevoP;
 		
-		System.out.print("n es: "+n);
 		if (n==0){
 			nuevoP = conn.prepareStatement(nuevaTablaPerfil);
 			nuevoP.setString(1, perf.getDireccion());
@@ -134,9 +144,15 @@ public class UserFacade {
 	}
 	
 
-	// Return 0 = No valido
-	// Return 1 = valido y no admin
-	// Return 2 = valido y admin
+
+	/**
+	 * Comprueba si "user" es válido.
+	 * @param user
+	 * @return 0 = usuario no válido.
+	 * 		   1 = usuario normal válido.
+	 * 		   2 = usuario administrador válido.
+	 * @throws SQLException
+	 */
 	public int validateUser(UsuarioVO user) throws SQLException { 
 		int result = 0;
 		Connection conn = null;
@@ -158,7 +174,6 @@ public class UserFacade {
 			
 			countRs.next();
 			int n = countRs.getInt(1);
-			System.out.println("Número de registros: " + n);
 			
 			
 			// Leemos resultados 
@@ -167,9 +182,7 @@ public class UserFacade {
 				findRs.next();
 				String dbpwd = findRs.getString("pwd");
 				Boolean dbadmin = findRs.getBoolean("admin");
-				//dbpwd = user.hash(dbpwd);
-				//System.out.print("db: " + dbpwd);
-				//System.out.print("us: " + user.getPwd());
+			
 				if (dbpwd.contentEquals(user.getPwd())) {
 					if (dbadmin) {
 						result = 2;
@@ -186,7 +199,6 @@ public class UserFacade {
 			findPs.close();
 			countRs.close();
 			countPs.close();
-			//updatePs.close();
 
 		} catch(SQLException se) {
 			se.printStackTrace();  
@@ -200,7 +212,12 @@ public class UserFacade {
 		return result;
 	}
 		
-	
+	/**
+	 * 
+	 * @param username
+	 * @return usuario cuyo nickname corresponde a "username"
+	 * @throws SQLException
+	 */
 	public UsuarioVO getUser(String username) throws SQLException {
 		Connection conn = null;
 		UsuarioVO user = null;
@@ -221,6 +238,12 @@ public class UserFacade {
 		return user;
 	}
 	
+	/**
+	 * 
+	 * @param username
+	 * @return Devuelve el perfil de usuario cuyo nickname es igual a "username"
+	 * @throws SQLException
+	 */
 	public Perfil_usuarioVO getPerfil(String username) throws SQLException {
 		Connection conn = null;
 		Perfil_usuarioVO perfil = null;
@@ -243,6 +266,14 @@ public class UserFacade {
 		return perfil;
 	}
 	
+	
+	/**
+	 * 
+	 * @param username
+	 * @return true = el usuario cuyo nickname es igual a "username" existe en la base de datos. En
+	 * caso contrario devuelve false.
+	 * @throws SQLException
+	 */
 	public Boolean existUser(String username) throws SQLException {
 		Connection conn = null;
 		Boolean existe = false;

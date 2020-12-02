@@ -14,7 +14,10 @@ import model.UserFacade;
 import model.UsuarioVO;
 
 /**
- * Servlet implementation class Logged
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el usuario quiere modificar su perfil.
+ *
  */
 @WebServlet("/perfil")
 public class Perfil extends HttpServlet {
@@ -28,8 +31,12 @@ public class Perfil extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Este servlet se invoca cuando el usuario quiere modificar/ver su perfil.
+     * Si el usuario no existe se le redirige a "login.jsp" indicandole el error,
+     * Si el usuario existe, devuelve la información correspondiente a su perfil.
+     * Cuando el usuario pulsa el botón "actualizar perfil" se persiste su información
+     * de perfil en la base de datos.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {

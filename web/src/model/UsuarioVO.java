@@ -1,5 +1,10 @@
 package model;
-
+/**
+ * 
+ * @author megalobox team
+ * Esta clase implementa el patrón VO de la entidad usuario.
+ *
+ */
 import java.util.Date;
 
 

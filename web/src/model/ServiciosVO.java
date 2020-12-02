@@ -1,5 +1,10 @@
 package model;
-
+/**
+ * 
+ * @author megalobox team
+ * Esta clase implementa el patrón VO de la entidad servicios.
+ *
+ */
 public class ServiciosVO {
 	String nombre;
 	String descripcion;

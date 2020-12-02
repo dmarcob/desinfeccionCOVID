@@ -20,7 +20,10 @@ import model.UsuarioVO;
 import utils.SendEmail;
 
 /**
- * Servlet implementation class Logged
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el administrador acepta, deniega o finaliza una solicitud
+ *
  */
 @WebServlet("/update_estado")
 public class update_estado extends HttpServlet {
@@ -35,7 +38,10 @@ public class update_estado extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Si el administrador no está logeado es redirigido a "login.jsp"
+	 * En caso contrario, actualiza el estado de la solicitud seleccionada.
+	 * Si el administrador ha aceptado o denegado la solicitud, se le envía un correo
+	 * al usuario que ha la ha generado indicándole la decisión del administrador.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -52,7 +58,6 @@ public class update_estado extends HttpServlet {
 				String destinatario = dao.emailSolicitud(idSolicitud);
 				SendEmail email = new SendEmail();
 				if (accion.equals("aceptar")) {
-					System.out.println("ACEPTADAAAA!!!!!");
 					dao.modificarSolicitud("aceptada", idSolicitud);
 					email.sendEmail(destinatario,"[Desinfecciones Megalo] Petición de desinfección."
 							,"Su petición de desinfección a la dirección: " +  direccion + " ha sido aceptada.");
@@ -64,7 +69,6 @@ public class update_estado extends HttpServlet {
 				} else {
 					//caso finalizar
 					dao.modificarSolicitud("finalizada", idSolicitud);
-					System.out.println("FINALIZADA!!!!!");
 				}
 				
 				

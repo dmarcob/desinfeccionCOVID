@@ -17,7 +17,10 @@ import model.UserFacade;
 import model.UsuarioVO;
 
 /**
- * Servlet implementation class Logged
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el administrador se logea en su cuenta.
+ *
  */
 @WebServlet("/listar_historial_admin")
 public class Listar_historial_admin extends HttpServlet {
@@ -32,7 +35,11 @@ public class Listar_historial_admin extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Si el administrador no está logeado es redirigido a "login.jsp"
+	 * Si el administrador está logeado por defecto le muestra las solicitudes
+	 * pendientes. Si el administrador ha seleccionado solicitudes aceptadas o denegadas
+	 * se muestran las solicitudes correspondientes.
+	 * Se ha implementado una paginación de las solicitudes para mostrarlas de tres en tres.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -46,10 +53,8 @@ public class Listar_historial_admin extends HttpServlet {
 				//Se actualiza el estado del historial
 				String estado = "pendiente";
 				
-				System.out.println("ESTADO ->" + request.getParameter("estado"));
 				if (request.getParameter("estado") != null) {
 					estado = (String)request.getParameter("estado");
-					//System.out.println("NUEVO ESTADO ->" + estado);
 				}
 				request.setAttribute("estado",estado);
 				
@@ -60,7 +65,6 @@ public class Listar_historial_admin extends HttpServlet {
 				UsuarioVO user = (UsuarioVO) request.getSession().getAttribute("user");
 				//Se obtiene el número de solicitudes totales del usuario logeado
 				int numSolicitudes = dao.numSolicitudesEstado(estado);
-				System.out.println("NUM SOLICITUDES ->" + numSolicitudes);
 				//Se obtiene el número de páginas totales a mostrar
 				int numPaginas = (int)Math.ceil(numSolicitudes/(double)solicitudesPorPagina);
 				request.setAttribute("numPaginas", numPaginas);
@@ -77,14 +81,11 @@ public class Listar_historial_admin extends HttpServlet {
 				//El offset de las tres solicitudes mostradas corresponde al valor (paginaActual - 1) * solicitudesPorPagina
 				
 				
-				List<SolicitudVO> l  = dao.historialEstado(estado, paginaActual, solicitudesPorPagina);
-				System.out.println("LISTA TAMAÑO ->" + l.size());
-				
+				List<SolicitudVO> l  = dao.historialEstado(estado, paginaActual, solicitudesPorPagina);				
 				
 				request.removeAttribute("lista_solicitudes");
 				request.setAttribute("lista_solicitudes", l);
 
-				System.out.println("paginaActualllll ->" + request.getParameter("paginaPinchada"));
 				request.getRequestDispatcher("historialAdmin.jsp").forward(request, response);
 
 			}

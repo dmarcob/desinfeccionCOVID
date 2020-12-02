@@ -22,7 +22,10 @@ import model.UserFacade;
 import model.UsuarioVO;
 
 /**
- * Servlet implementation class Logged
+ * 
+ * @author megalobox team
+ * Este servlet se invoca cuando el usuario quiere enviar una solicitud.
+ *
  */
 @WebServlet("/enviar_solicitud")
 public class Enviar_solicitud extends HttpServlet {
@@ -37,7 +40,9 @@ public class Enviar_solicitud extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Si el usuario no está logeado es redirigido a "login.jsp"
+	 * Si el usuario está logeado recoge los datos enviados por el usuario, añade la solicitud a la
+	 * base de datos mediante SolicitudFacade y redirige al usuario a "services_log.jsp"
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -46,9 +51,6 @@ public class Enviar_solicitud extends HttpServlet {
 		} else {
 			SolicitudFacade dao = new SolicitudFacade();
 			UsuarioVO user = (UsuarioVO) request.getSession().getAttribute("user");
-			
-			 System.out.println("servicio ->"+request.getParameter("servicio"));
-			 
 			SolicitudVO solicitud = new SolicitudVO(request.getParameter("direccion"), request.getParameter("fecha"), 
 					request.getParameter("hora"),request.getParameter("mensaje"),
 					"pendiente", request.getParameter("servicio"), user.getnickname());
