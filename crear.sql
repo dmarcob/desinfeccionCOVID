@@ -78,6 +78,9 @@ alter table web.perfil_usuario alter column iduser set default nextval('web.seri
 insert into web.usuario values ('admin', '21232f297a57a5a743894a0e4a801fc3', true);
 
 
-
+--servicios
+insert into web.servicios values('Baldosa', 'servicio baldosa', 300);
+insert into web.servicios values('Moqueta', 'servicio moqueta', 200);
+insert into web.servicios values('Parque', 'servicio parque', 100);
 
 
