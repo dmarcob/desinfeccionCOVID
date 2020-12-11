@@ -23,6 +23,7 @@ public class UserFacade {
 	private static String countByUserName = "SELECT count(*) cuenta FROM usuario WHERE nickname = ?";
 	private static String countByPerfil = "SELECT count(*) cuenta FROM web.perfil_usuario WHERE nickname = ?";
 	private static String findByUserName = "SELECT * FROM usuario WHERE nickname = ?";
+	//private static String modifyUser = "SELECT * FROM usuario WHERE nickname = ?";
 	
 	/**
 	 * Añade un usuario no administrador a la base de datos

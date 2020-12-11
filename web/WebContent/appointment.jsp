@@ -39,7 +39,7 @@
       <div class="shell">
         <div class="range">
           <div class="cell-xs-12 offset-top-60">
-            <form data-form-output="form-output-global" data-form-type="order" method="get" action="enviar_solicitud" class="rd-mailform">
+            <form data-form-output="form-output-global" data-form-type="order" method="post" action="enviar_solicitud" class="rd-mailform">
               <div class="range">
                 <div class="cell-xs-12 offset-top-18">
                    <div class="form-group">

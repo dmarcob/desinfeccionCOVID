@@ -120,7 +120,7 @@
 					<div class="shell text-center">
 						<div class="wrap-sm-justify-horizontal">
 							<div class="text-sm-left">
-								<h1>Iniciar sesion</h1>
+								<h1>Iniciar sesi�n</h1>
 							</div>
 							<div class="offset-top-22 offset-sm-top-0 text-sm-right">
 								<ul class="breadcrumbs-custom">
@@ -153,7 +153,7 @@
 								<div class="resp-tabs-container offset-top-40">
 									<div class="animated fadeIn">
 										<form class="rd-mailform text-left" id=login_usuario
-											method="get" action="signin">
+											method="post" action="signin">
 											<div class="form-group">
 												<label for="login-nickname" class="form-label-outside">Nombre
 													usuario</label> <input id="login-nickname" type="text"
@@ -209,7 +209,7 @@
 							<div class="cell-md-4 cell-lg-5 offset-top-55 offset-md-top-0">
 								<div class="range">
 									<div class="cell-xs-12">
-										<h5 class="h5-variant-1">Contáctanos</h5>
+										<h5 class="h5-variant-1">Contactanos</h5>
 										<hr>
 									</div>
 									<div
@@ -245,7 +245,7 @@
 													<span class="icon icon-xs icon-white mdi mdi-map-marker"></span>
 												</div>
 												<div class="unit-body">
-													<a href="#" class="nowrap">2381 Vía Hispanidad<br>
+													<a href="#" class="nowrap">2381 Via Hispanidad<br>
 														ZGZ 50001. SPA
 													</a>
 												</div>

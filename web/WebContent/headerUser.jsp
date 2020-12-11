@@ -49,7 +49,7 @@
                       <div class="unit-left"><span class="icon icon-circle-sm icon-sm-variant-1 icon-venice-blue-filled icon-white mdi mdi-phone"></span></div>
                       <div class="unit-body">
                         <address class="contact-info">
-                        <span><a href="callto:#">976 56 84 57</a></span><span><a href="callto:#">976 65 32 84</a></span>
+                        <span>976 56 84 57</span><span>976 65 32 84</span>
                         </address>
                       </div>
                     </div>

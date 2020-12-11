@@ -114,7 +114,7 @@
             </div>
             <div class="offset-top-22 offset-sm-top-0 text-sm-right">
               <ul class="breadcrumbs-custom">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="services_log.jsp">Home</a></li>
                 <li class="active">Make an Appointment</li>
               </ul>
             </div>
@@ -126,7 +126,7 @@
       <div class="shell">
         <div class="range">
           <div class="cell-xs-12 offset-top-60">
-              <form class="rd-mailform text-left" id=formulario-perfil method="get" action="perfil">
+              <form class="rd-mailform text-left" id=formulario-perfil method="post" action="perfil">
                     
                       <div class="form-group">
                         <label for="register-username" class="form-label-outside">Nombre completo</label>
@@ -159,16 +159,9 @@
                         >
                       </div>
                		  <br>
-			 <div class="p-3 row-md-2">
-              <div class="row offtop-sm-12 bg-gray-lighter">
-                <div class="col-sm-6">
-                  <button type="submit" class="btn btn-round btn-danger btn-lg btn-block">Eliminar cuenta</button>
-                </div>
-                <div class="col-sm-6">
-                  <button type="submit" class="btn btn-round btn-primary btn-lg btn-block">Actualizar perfil</button>
-                </div> 
-          </div>
-        </div>
+               		  <div class="offset-top-18 text-center">
+                		  <button type="submit" class="btn btn-round btn-primary btn-lg btn-block">Actualizar perfil</button>
+                	  </div>
                     </form>
             
             
@@ -197,7 +190,7 @@
             <div class="cell-md-4 cell-lg-5 offset-top-55 offset-md-top-0">
               <div class="range">
                 <div class="cell-xs-12">
-                  <h5 class="h5-variant-1">Contáctanos</h5>
+                  <h5 class="h5-variant-1">Contactanos</h5>
                   <hr>
                 </div>
                 <div class="cell-xs-5 cell-sm-6 cell-md-12 cell-lg-6 offset-top-18 text-xs-left">
@@ -216,7 +209,7 @@
                   <address class="contact-info contact-info-contrast">
                   <div class="unit unit-xs-horizontal unit-spacing-xs">
                     <div class="unit-left icon-adjust-vertical"><span class="icon icon-xs icon-white mdi mdi-map-marker"></span></div>
-                    <div class="unit-body"><a href="#" class="nowrap">2381 Vía Hispanidad<br>
+                    <div class="unit-body"><a href="#" class="nowrap">2381 Via Hispanidad<br>
                       ZGZ 50001. SPA</a></div>
                   </div>
                   <div class="unit unit-xs-horizontal unit-spacing-xs offset-top-22">

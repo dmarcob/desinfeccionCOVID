@@ -57,7 +57,7 @@
                       <h4>300 &euro;</h4>
                     </div>
                   </div>
-                  <p>Ice makers are kitchen appliances that are commonly found in two formats; those that are found attached to a refrigerator unit and those that stand alone and function solely to produce and store ice. The function of an ice maker is pretty straightforward; it mainly turns water into ice. Its secondary function is to store the ice in cubes or in blocks until they are ready to be used. Majority of US households prefer refrigerator units that feature ice makers. Models that are not equipped with one are eventually upgraded by adding a smaller unit and are then integrated for efficiency and optimum functionality.</p>
+                  <p> La moqueta es un servicio para oficinas cuyo suelo disponga de este material y la superficie no exceda los 150 metros cuadrados.</p>
                 </div>
                 <div class="tab">
                   <div class="box-custom-variant-1">
@@ -68,8 +68,8 @@
                       <h4>200 &euro;</h4>
                     </div>
                   </div>
-                  <p>Times are tough in todays economy and most families have to cut back on expenses. Nearly every family is abiding by a strict budget and everyone is tightening their belts to make ends meet. San Diego is one area of the country that has been hit the hardest. Restaurants are one of the first things that people cut from their budget. Getting your cooking equipment in tip top shape has never been more important since families are spending more time cooking at home. Most kitchen appliances need regular maintenance to ensure they work for a lifetime.</p>
-                </div>
+                    <p> La baldosa es un servicio para oficinas cuyo suelo disponga de este material y la superficie no exceda los 200 metros cuadrados.</p>
+               </div>
                 <div class="tab">
                   <div class="box-custom-variant-1">
                     <div class="box-header">
@@ -79,9 +79,7 @@
                         <h4>100 &euro; </h4>
                     </div>
                   </div>
-                  <p>Are you currently scouring the Internet for quality appliance parts?</p>
-                  <p>The majority of us lead busy and hectic schedules on a daily basis. Our time is divided between numerous activities such as work, family, daily chores, recreation, and leisure. The modern conveniences delivered by home appliances and similar equipment have made it possible for each and every one of us to appreciate and enjoy life more. The luxury and extra time that we get from operating such devices at home translate to more of lifes meaningful moments. And these are also the main reasons why our worlds crumble when appliances break down and encounter damage. But in these difficult times, you just cant replace these items immediately. Hiring a professional to restore appliances to its previous working condition just wont make the cut either. Most of the appliance dilemmas are caused by nonworking parts that need replacement. Why spend more when you can get the same results for less? This is where Service Center steps in.</p>
-                  <p> Do-it-yourselfers take pride in the fact that they can create and fix things without the assistance from others. By using what little skill one has and combining that with smarts, DIY-ers create wonderful and functional things all the time. When it comes to appliance parts, Service Center is a do-it-yourselfer haven. It houses thousands upon thousands of spare parts and accessories from all the brands that sell home appliances. No matter how big or small your need may be, Service Center can definitely help you with your home appliance problems. </p>
+                  <p> El parque es un servicio para oficinas cuyo suelo disponga de este material y la superficie no exceda los 100 metros cuadrados.</p>
                 </div>
 
             <div class="range offset-top-55 offset-sm-top-88">
@@ -153,7 +151,7 @@
             <div class="cell-md-4 cell-lg-5 offset-top-55 offset-md-top-0">
               <div class="range">
                 <div class="cell-xs-12">
-                  <h5 class="h5-variant-1">Contáctanos</h5>
+                  <h5 class="h5-variant-1">ContÃ¡ctanos</h5>
                   <hr>
                 </div>
                 <div class="cell-xs-5 cell-sm-6 cell-md-12 cell-lg-6 offset-top-18 text-xs-left">
@@ -172,7 +170,7 @@
                   <address class="contact-info contact-info-contrast">
                   <div class="unit unit-xs-horizontal unit-spacing-xs">
                     <div class="unit-left icon-adjust-vertical"><span class="icon icon-xs icon-white mdi mdi-map-marker"></span></div>
-                    <div class="unit-body"><a href="#" class="nowrap">2381 Vía Hispanidad<br>
+                    <div class="unit-body"><a href="#" class="nowrap">2381 VÃ­a Hispanidad<br>
                       ZGZ 50001. SPA</a></div>
                   </div>
                   <div class="unit unit-xs-horizontal unit-spacing-xs offset-top-22">

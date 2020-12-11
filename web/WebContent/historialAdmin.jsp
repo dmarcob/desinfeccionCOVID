@@ -101,7 +101,6 @@
             </div>
             <div class="offset-top-22 offset-sm-top-0 text-sm-right">
               <ul class="breadcrumbs-custom">
-                <li><a href="index.html">Home</a></li>
                 <li class="active">Historial de solicitudes</li>
               </ul>
             </div>
@@ -191,12 +190,12 @@
 						<div class="p-3 row-md-2">
               <div class="row offtop-sm-12 bg-gray-lighter">
                 <div class="col-sm-6">
-                <a href="/web/update_estado?estado=pendiente&accion=aceptar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
+                <a href="/update_estado?estado=pendiente&accion=aceptar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
                   <button type="button" class="btn btn-round btn-success btn-lg btn-block" >Aceptar</button>
                 </a>
                 </div>
                 <div class="col-sm-6">
-                  <a href="/web/update_estado?estado=pendiente&accion=denegar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
+                  <a href="/update_estado?estado=pendiente&accion=denegar&idSolicitud=<%out.print(solicitud.getId());%>&direccion=<%out.print(solicitud.getDireccion());%>">
                   <button type="button" class="btn btn-round btn-danger btn-lg btn-block">Denegar</button>
                   </a>
                 </div> 
@@ -208,7 +207,7 @@
 							
 							<div class="row-md-2">
               					<div class="row offtop-sm-12 bg-gray-lighter">
-                  				<a href="/web/update_estado?estado=aceptada&accion=finalizar&idSolicitud=<%out.print(solicitud.getId());%>">
+                  				<a href="/update_estado?estado=aceptada&accion=finalizar&idSolicitud=<%out.print(solicitud.getId());%>">
                   					<button type="button" class="btn btn-round btn-success btn-lg btn-block">Finalizar</button>
                   				</a>
               					</div>
@@ -231,7 +230,7 @@
           	  	<% } else { %>
           	  	 	<li>
           	  	<% } %>
-          	  	       <a href=<% out.print("listar_historial_usuario?paginaPinchada=" + i);%>>
+          	  	       <a href=<% out.print("listar_historial_admin?paginaPinchada=" + i);%>>
           	  	       		<% out.print(i);
           	  	       		%></a>
           	  		</li>
@@ -261,7 +260,7 @@
             <div class="cell-md-4 cell-lg-5 offset-top-55 offset-md-top-0">
               <div class="range">
                 <div class="cell-xs-12">
-                  <h5 class="h5-variant-1">Cont√°ctanos</h5>
+                  <h5 class="h5-variant-1">Cont·ctanos</h5>
                   <hr>
                 </div>
                 <div class="cell-xs-5 cell-sm-6 cell-md-12 cell-lg-6 offset-top-18 text-xs-left">
