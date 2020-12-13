@@ -1,19 +1,18 @@
 # Servicio de desinfecciones COVID-19  
 ![alt text](https://github.com/dmarcob/desinfeccionCOVID/blob/main/images/index.png)
 
-### ¿Qué problema resuelve este sistema de información?  
+#### ¿Qué problema resuelve este sistema de información?  
  Permite que el usuario pueda solicitar a una compañía externa la desinfección de COVID-19 en   
  un local u oficina pertenecientes al usuario.  
 
 ### ¿Qué funcionalidad implementa este sistema de información?  
- El usuario puede enviar solicitudes de desinfección.  
- El usuario puede actualizar su informacin personal.  
- El usuario puede ver su historial de solicitudes.  
- El usuario puede ver los servicios que ofrece la empresa de desinfección.  
- 
- El administrador del sistema de informacin puede ver las solicitudes enviadas por los usuarios.  
- EL administrador puede aceptar, denegar y finalizar las solicitudes enviadas por los usuarios.  
- El sistema enva un correo electrónico a un usuario cuando el administrador deniega o acepta una petición suya.  
+ 1. El usuario puede enviar solicitudes de desinfección.  
+ 2. El usuario puede actualizar su informacin personal.  
+ 3. El usuario puede ver su historial de solicitudes.  
+ 4. El usuario puede ver los servicios que ofrece la empresa de desinfección.   
+ 5. El administrador del sistema de informacin puede ver las solicitudes enviadas por los usuarios.  
+ 6. EL administrador puede aceptar, denegar y finalizar las solicitudes enviadas por los usuarios.  
+ 7. El sistema envía un correo electrónico a un usuario cuando el administrador deniega o acepta una petición suya.  
  
 ### ¿En qué contexto se ha realizado este proyecto?  
  Se ha realizado como prácticas de la asignatura Sistemas de Información de 3º de Ingeniería informática.  
