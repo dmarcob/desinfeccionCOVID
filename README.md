@@ -13,7 +13,7 @@ sh make.sh
 
 * **¿Qué funcionalidad implementa este sistema de información?**  
  :heavy_check_mark: El usuario puede enviar solicitudes de desinfección.  
- :heavy_check_mark: El usuario puede actualizar su informacin personal.  
+ :heavy_check_mark: El usuario puede actualizar su información personal.  
  :heavy_check_mark: El usuario puede ver su historial de solicitudes.  
  :heavy_check_mark: El usuario puede ver los servicios que ofrece la empresa de desinfección.   
  :heavy_check_mark: El administrador del sistema de informacin puede ver las solicitudes enviadas por los usuarios.  
