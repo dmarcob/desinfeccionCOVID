@@ -1,5 +1,5 @@
 # Servicio de desinfecciones COVID-19  
-![alt text](https://github.com/dmarcob/desinfeccionCOVID/images/index.png)
+![alt text](https://github.com/dmarcob/desinfeccionCOVID/blob/main/images/index.png)
 
 ¿Qué problema resuelve este sistema de información?
  Permite que el usuario pueda solicitar a una compañía externa la desinfección de COVID-19 en 
