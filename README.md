@@ -1,13 +1,13 @@
 # Servicio de desinfecciones COVID-19  
 ![alt text](https://github.com/dmarcob/desinfeccionCOVID/blob/main/images/index.png)  
-### Despliegue de la aplicacin web con docker
+### Despliegue de la aplicación web con docker
 ```bash
 unzip docker.zip
 cd docker/
 sh make.sh
 ```
 
-#### ¿Qué problema resuelve este sistema de información?  
+* ¿Qué problema resuelve este sistema de información?  
  Permite que el usuario pueda solicitar a una compañía externa la desinfección de COVID-19 en   
  un local u oficina pertenecientes al usuario.  
 
