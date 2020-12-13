@@ -12,7 +12,7 @@ sh make.sh
  un local u oficina pertenecientes al usuario.  
 
 * **¿Qué funcionalidad implementa este sistema de información?**  
- 1. El usuario puede enviar solicitudes de desinfección.  
+ :heavy_check_mark: El usuario puede enviar solicitudes de desinfección.  
  2. El usuario puede actualizar su informacin personal.  
  3. El usuario puede ver su historial de solicitudes.  
  4. El usuario puede ver los servicios que ofrece la empresa de desinfección.   
