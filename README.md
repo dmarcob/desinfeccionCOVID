@@ -1,7 +1,7 @@
 # Servicio de desinfecciones COVID-19  
 ![alt text](https://github.com/dmarcob/desinfeccionCOVID/blob/main/images/index.png)  
 ### Despliegue de la aplicacin web con docker
-```
+```bash
 unzip docker.zip
 cd docker/
 sh make.sh
