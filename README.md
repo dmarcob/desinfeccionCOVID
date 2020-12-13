@@ -13,12 +13,12 @@ sh make.sh
 
 * **¿Qué funcionalidad implementa este sistema de información?**  
  :heavy_check_mark: El usuario puede enviar solicitudes de desinfección.  
- 2. El usuario puede actualizar su informacin personal.  
- 3. El usuario puede ver su historial de solicitudes.  
- 4. El usuario puede ver los servicios que ofrece la empresa de desinfección.   
- 5. El administrador del sistema de informacin puede ver las solicitudes enviadas por los usuarios.  
- 6. EL administrador puede aceptar, denegar y finalizar las solicitudes enviadas por los usuarios.  
- 7. El sistema envía un correo electrónico a un usuario cuando el administrador deniega o acepta una petición suya.  
+ :heavy_check_mark: El usuario puede actualizar su informacin personal.  
+ :heavy_check_mark: El usuario puede ver su historial de solicitudes.  
+ :heavy_check_mark: El usuario puede ver los servicios que ofrece la empresa de desinfección.   
+ :heavy_check_mark: El administrador del sistema de informacin puede ver las solicitudes enviadas por los usuarios.  
+ :heavy_check_mark: EL administrador puede aceptar, denegar y finalizar las solicitudes enviadas por los usuarios.  
+ :heavy_check_mark: El sistema envía un correo electrónico a un usuario cuando el administrador deniega o acepta una petición suya.  
  
 * **¿En qué contexto se ha realizado este proyecto?**  
  Se ha realizado como prácticas de la asignatura Sistemas de Información de 3º de Ingeniería informática.  
